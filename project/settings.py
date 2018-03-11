@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'catalog',
+    'checkout',
+    'order',
+    'review',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +81,15 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'OrderingSystemDB',
+        'USER': 'Zw',
+        'PASSWORD': 'a00789123',
+        'HOST': 'orderingsystemins.cdkb9s3xi6ry.us-east-2.rds.amazonaws.com',
+        'PORT': '3306',
+    },
+
+    'old': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
@@ -125,5 +139,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATICFILES_DIRS = [
     ('css', os.path.join(STATIC_ROOT, 'css').replace('\\', '/')),
     ('js', os.path.join(STATIC_ROOT, 'js').replace('\\', '/')),
+    ('fonts', os.path.join(STATIC_ROOT, 'fonts').replace('\\', '/')),
     ('images', os.path.join(STATIC_ROOT, 'images').replace('\\', '/')),
 ]
