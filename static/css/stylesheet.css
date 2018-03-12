@@ -42,3 +42,33 @@
 	width: 156px;
 	z-index: 90;
 }
+
+/*css for top links */
+.toplinks{
+	height:40px;
+	background-color:#656B6B; 
+}
+.toplinks-container {
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.links-right{
+	display:inline-block;
+	float:right;
+}
+.links-right > a{
+	color:white;
+	padding-left:20px;
+}
+.links-left {
+	display:inline-block;
+	color:white;
+	font-family: arial;
+}
+
+.toplinks-container > div{
+	padding:10px 10px 10px 10px;
+	font-size:14px;
+	font-family: arial;
+}
