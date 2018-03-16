@@ -2,8 +2,8 @@ from django.db import models
 
 class account(models.Model):
 	class Meta:
-		db_table = "account"
-	account_id = models.IntegerField(default=10000)
+		db_table = "account" #without Meta class defined, the db name will be `account_account`
+	id = models.IntegerField(default=10000, primary_key=True)
 	first_name = models.CharField(max_length=12)
 	last_name = models.CharField(max_length=12)
 	username = models.CharField(max_length=30)
@@ -18,4 +18,7 @@ class account(models.Model):
 		('fc','food customer'),	
 	)
 	account_type = models.CharField(max_length=2, choices = ACC_TYPES)
+
+#class address(models.Model): #db account_address
+
 
