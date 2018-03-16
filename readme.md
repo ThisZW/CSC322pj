@@ -1,15 +1,13 @@
-# Laravel Quickstart - Basic
 
-## Quck Installation
 
-    git clone https://github.com/laravel/quickstart-basic quickstart
+#
 
-    cd quickstart
+Run following commands to install proper PHP
 
-    composer install
+sudo apt-get install php7.1-mbstring php7.1-xml composer unzip
+#laravel is installed so nothing needed
 
-    php artisan migrate
+cd php_laravel
+php artisan runserver
 
-    php artisan serve
 
-[Complete Tutorial](https://laravel.com/docs/5.2/quickstart)
