@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'iMaxDelivery'),
+    'name' => env('APP_NAME', 'iEats'),
 
     /*
     |--------------------------------------------------------------------------
@@ -154,11 +154,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        iEats\Providers\AppServiceProvider::class,
+        iEats\Providers\AuthServiceProvider::class,
+        // iEats\Providers\BroadcastServiceProvider::class,
+        iEats\Providers\EventServiceProvider::class,
+        iEats\Providers\RouteServiceProvider::class,
 
     ],
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace iEats\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

@@ -11,11 +11,16 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/LavarelDefaultPage', function () {
     return view('welcome');
 });
 
+Route::get('/', function(){
+	return view('pages/index');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/stores', 'CatalogController@index')->name('catalog');
