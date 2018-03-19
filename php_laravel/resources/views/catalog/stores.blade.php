@@ -1,5 +1,12 @@
 <!-- stores.blade.php -->
 
 @include('layouts.header')
-fjdksalfjdsalk;fjdlsajfl;da
+
+{{ $data}}
+
+
+
+
+
+
 @include('layouts.footer')
