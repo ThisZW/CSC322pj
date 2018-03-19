@@ -452,11 +452,11 @@ img {
 #body div.footer div p a:hover, #body div ul li p a:hover, #body div.blog .featured ul li div p a:hover, #body div.blog .sidebar p a:hover, #body div.blog .featured p a:hover, #body.contact div.body div div p a:hover {
 	color: #c8c10d;
 }
-#body div {
+/*#body div {
 	margin: 0 auto;
 	max-width: 960px;
 	padding: 7px 0 57px;
-}
+}*/
 #body div ul {
 	display: inline-block;
 	list-style: none outside none;
@@ -504,10 +504,10 @@ img {
 	text-decoration: underline;
 }
 #body div ul li img {
-	display: block;
-	margin: 0 auto 15px;
-	padding: 0;
-	width: auto;
+    display: block;
+    margin: 0 auto 15px;
+    padding: 30px 0 0;
+    width: 150px;
 }
 #body div ul li h2 {
 	color: #e32a62;

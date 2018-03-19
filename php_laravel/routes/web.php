@@ -23,4 +23,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/stores', 'CatalogController@index')->name('catalog');
+Route::get('/stores', 'Catalog\StoreController@index');
+
+<<<<<<< HEAD
+Route::get('/stores/{storeId}/menu','Catalog\CategoryController@index');
+
+Route::get('/stores/{storeId}/menu/{categoryId}/product/{productId}','Catalog\ProductController@index');
+=======
+Route::get('/stores/{storeId}/menu','Catalog\CategoryController@index');
+>>>>>>> 8d36a80... menu page done
