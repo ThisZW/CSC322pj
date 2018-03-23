@@ -31,6 +31,7 @@
     <title>Pizza Delivery</title>
     <link rel="alternative stylesheet" href="{{ asset("css/style.css") }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset("css/stylesheet.css") }}" />
+    <link rel="stylesheet" href="{{ asset("css/superstylesheet.css") }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset("css/mobile.css") }}" />
     <script src="{{ asset("js/mobile.js") }}" type="text/javascript"></script>
 
