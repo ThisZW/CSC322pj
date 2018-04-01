@@ -72,3 +72,23 @@
 	font-size:14px;
 	font-family: arial;
 }
+
+.store-header{
+	background-color: coral;
+	margin: 0 auto;
+	max-width: none;
+	overflow: hidden;
+	padding: 80px 0;
+} 
+
+#body div.store-header div h1 {
+	color: #FFFFFF;
+	font-family: apple chancery, cursive;
+	font-size: 50px;
+	font-weight: normal;
+	line-height: 30px;
+	margin: 0;
+	padding: 28px 0 23px;
+	text-align: center;
+	text-transform: uppercase;
+}

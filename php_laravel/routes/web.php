@@ -26,5 +26,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/stores', 'Catalog\StoreController@index');
 
 Route::get('/stores/{storeId}/menu','Catalog\CategoryController@index');
-
-Route::get('/stores/{storesId}/menu/{categoryId}/product/{product_id}','Catalog\ProductController@index');

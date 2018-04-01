@@ -10,7 +10,7 @@
 	height:600px;
 	max-width:100% !important;
 	overflow: hidden;
-	background-image: url("/images/pizza-banner.jpg");    
+	background-image: url("/static/images/pizza-banner.jpg");    
 	background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center; 
@@ -28,12 +28,12 @@
 	color: #FFFFFF;
 	display: block;
 	font-family: quicksand-bold-webfont;
-	font-size: 1.5rem;
+	font-size: 24px;
 	font-weight: normal;
-	height: 5.5rem;
-	line-height: 1.5rem;
+	height: 99px;
+	line-height: 24px;
 	margin: 0;
-	padding: 3rem 0 7rem;
+	padding: 52px 0 0;
 	position: absolute;
 	right: 1px;
 	text-align: center;
@@ -71,4 +71,75 @@
 	padding:10px 10px 10px 10px;
 	font-size:14px;
 	font-family: arial;
+}
+
+.store-header{
+	background-color: coral;
+	margin: 0 auto;
+	max-width:100% !important;
+	overflow: hidden;
+	padding: 60px 0 !important;
+} 
+
+#body div.store-header h1 {
+	color: #FFFFFF;
+	font-family: apple chancery, cursive;
+	font-size: 50px;
+	font-weight: normal;
+	line-height: 30px;
+	margin: 0;
+	/* padding: 28px 0 23px; */
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#body {
+	background-color:lemonchiffon;
+}
+
+#body div ul li h2 {
+    color: #7a6666;
+    font-family: lato-regular-webfont;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-transform: none;
+}
+
+.menu-price {
+	text-align: center;
+color: black;
+font-family: lato-regular-webfont;
+font-size: 15px
+}
+
+#body div ul {
+    display: inline-block;
+    list-style: none outside none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 0 52px;
+    width: 100%;
+}
+
+#body div ul li {
+    float: left;
+    margin: 0 10px;
+    padding: 0;
+    width: 220px;
+}
+
+.menu-product-image {
+    display: block;
+    margin: 0 auto 15px;
+    padding: 30px 0 0;
+    width: 150px;
+}
+
+.menu-container{
+	margin:auto;
+	max-width: 960px;
 }
