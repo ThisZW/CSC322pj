@@ -19,20 +19,19 @@ class CategoryController extends Controller
 	*/
 	public function getListings($storeId)
 	{
-<<<<<<< HEAD
+
 		$categories = categories::where('store_id', $storeId)->get();
 		foreach ($categories as $cat){
 			#echo "???" . $cat->id;
 			$products = products::where('category_id',$cat->id)->get();
-=======
-		$categories = categories::where('store_id', $storeId)->take(20)->get();
-		foreach ($categories as $cat){
-			#echo "???" . $cat->id;
-			$products = products::where('category_id',$cat->id)->take(20)->get();
->>>>>>> 8d36a80... menu page done
-			$cat->products = $products;
-		}
+			$categories = categories::where('store_id', $storeId)->take(20)->get();
+			foreach ($categories as $cat){
+				#echo "???" . $cat->id;
+				$products = products::where('category_id',$cat->id)->take(20)->get();
+				$cat->products = $products;
+			}
 		return $categories;
+		}
 	}
 
 
