@@ -1,13 +1,14 @@
  @include('layouts.header')
 <div class="product-container main">
-	<div class="product-image">
+{{$data}}
+	<div class="breadcrumbs">This is the place for breadcrumbs!</div>
 
+	<div class="product-image">
 	<img src="{{asset('images/product-images/' . $data->image)}}" border ="10" style="border-style: inset" 
 	   style = "border-color: coral" width="400" height="400" alt="Image of tea"
 	title="picture of tea"/>
 
 	</div>
-
 
 	<div class="product-side">
 	     <div class="product-name"> Original Bubble Tea</div>
