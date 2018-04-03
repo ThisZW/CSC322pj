@@ -14,9 +14,9 @@ class ProductController extends Controller
     public function getProductData($storeId,$categoryId,$productId){
     	$product = products::where('id',$productId)->first();
     	$product->store_id = $storeId;
-    	$productOptions = product_options::with('product_option_types')->where('product_id',$productId)->get();
+    	//$productOptions = product_options::with('product_option_types')->where('product_id',$productId)->get();
 
-    	$product->options = $productOptions;
+    	//$product->options = $productOptions;
     	return $product;
     }
 
