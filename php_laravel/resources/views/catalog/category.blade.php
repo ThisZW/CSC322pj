@@ -7,7 +7,7 @@
 			<div class="store-header">
 					<h1>Fullmoon Bubble Tea Store</h1>
 			</div>
-			<div class="menu-container">
+			<div class="menu-container main">
 				@foreach ($data as $cat)
 					<ul>
 						<li class="menu-category">
@@ -18,11 +18,11 @@
 						</li>
 						@foreach ($cat->products as $p)
 							<li class="menu-product">
-								<div class="menu-product-div">
+								<a href="{{Request::url() . '/' . $cat->id . '/product/' . $p->id }}"><div class="menu-product-div">
 									<img class="menu-product-image" src="{{ asset('images/product-images/'. $p->image)}}"/>
 									<h2> {{ $p->name }} </h2>
 									<div class="menu-price"> ${{$p->price_t1}}</div>
-								</div>
+								</div></a>
 							</li>
 						@endforeach
 					</ul>

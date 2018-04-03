@@ -19,7 +19,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -99,7 +99,7 @@
                         <a href="/">Home</a>
                     </li>
                     <li class="menu">
-                        <a href="stores">Stores</a>
+                        <a href="/stores">Stores</a>
                     </li>
                     <li class="menu">
                         <a href="about.html">About</a>

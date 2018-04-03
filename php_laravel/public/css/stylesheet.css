@@ -139,7 +139,82 @@ font-size: 15px
     width: 150px;
 }
 
-.menu-container{
+.main{
 	margin:auto;
 	max-width: 960px;
+}
+
+.product-image{
+	margin: 0;
+	width: 450px;
+	height:450px;
+	border-right: 1px solid none;
+	float:left;
+	padding: 20px 38px 10px 20px;
+}
+
+.product-side{
+	margin: 0;
+	padding: 50px 50px 50px 50px;
+	/*border:1px #666 solid;*/
+	/*text-align: center;*/
+}
+
+.product-descriptions{
+	border-right: 1px solid none;
+	float:left;
+	padding: 20px 58px 30px 40px;
+}
+
+
+.product-descriptions h1{
+	background: url(image/bubbletea.jpg) no-repeat top left;
+	margin: 0;
+	padding: 30px 60px 55px 40px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 400%;
+	font-weight: bold;
+	color: #4B0082;
+}
+
+.product-descriptions > h2{
+	background-color: #bcb8b8;
+	border-radius: 10px;
+	margin: 18px 0 3px 0;
+	padding: 10px 0 3px 30px;
+	font-family: Vladimir Script, sans-serif;
+	font-size: 200%;
+	font-weight: bold;
+	color: black;
+	border-bottom: 1px solid none;
+}
+
+
+.product-name{
+	margin: 0;
+	padding: 5px;
+	font-size: 25px;
+	font-weight: bold;
+	color: #002899
+}
+.product-descriptions h6{
+	margin: 0;
+	font-size: 200%;
+	font-weight: bold;
+	color: #FFF;
+	font-style: italic;
+}
+
+.product-side select{
+	height: 30px;
+	width: 150px;
+	color: purple;
+	font-size: large;
+	font-family: "Times New Roman", sans-serif;
+}
+
+.price-label{
+	color:purple;
+	font-size:20px;
+	font-weight:bold;
 }
