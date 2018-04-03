@@ -24,11 +24,6 @@
 									<h2> {{ $p->name }} </h2>
 									<div class="menu-price"> ${{$p->price_t1}}</div>
 								</div></a>
-								<div class="menu-product-div">
-									<img class="menu-product-image" src="{{ asset('images/product-images/'. $p->image)}}"/>
-									<h2> {{ $p->name }} </h2>
-									<div class="menu-price"> ${{$p->price_t1}}</div>
-								</div>
 							</li>
 						@endforeach
 					</ul>
