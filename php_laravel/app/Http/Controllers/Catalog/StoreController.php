@@ -5,7 +5,7 @@ namespace iEats\Http\Controllers\Catalog;
 use Illuminate\Http\Request;
 use iEats\Http\Controllers\Controller;
 
-use iEats\Model\Catalog\stores;
+use iEats\Model\Catalog\Store;
 
 class StoreController extends Controller
 {
@@ -18,7 +18,7 @@ class StoreController extends Controller
      */
     public function getAllStores()
     {
-    	$data = stores::all();
+    	$data = Store::all();
     	return $data;
     }
 

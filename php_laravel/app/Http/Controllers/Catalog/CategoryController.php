@@ -5,8 +5,8 @@ namespace iEats\Http\Controllers\Catalog;
 use Illuminate\Http\Request;
 use iEats\Http\Controllers\Controller;
 
-use iEats\Model\Catalog\categories;
-use iEats\Model\Catalog\products;
+use iEats\Model\Catalog\Category;
+use iEats\Model\Catalog\Product;
 //use iEats\Model\Catalog\store_products;
 
 class CategoryController extends Controller
@@ -20,10 +20,10 @@ class CategoryController extends Controller
 	public function getListings($storeId)
 	{
 
-		$categories = categories::where('store_id', $storeId)->take(20)->get();
+		$categories = Category::find($storeId)->take(20)->get();
 		foreach ($categories as $cat){
 			#echo "???" . $cat->id;
-			$products = products::where('category_id',$cat->id)->take(20)->get();
+			$products = Product::where('category_id',$cat->id)->take(20)->get();
 			$cat->products = $products;
 		}
 		return $categories;

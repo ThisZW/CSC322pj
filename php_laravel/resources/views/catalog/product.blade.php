@@ -1,6 +1,6 @@
  @include('layouts.header')
 <div class="product-container main">
-{{$data}}
+
 	<div class="breadcrumbs">This is the place for breadcrumbs!</div>
 
 	<div class="product-image">
@@ -10,34 +10,56 @@
 
 	</div>
 
+	{{ $actual_price = $data->price_t1 }} <!--This will be the price based on customer login-->
+
 	<div class="product-side">
-	     <div class="product-name"> Original Bubble Tea</div>
-	      <p class="price-label">${{ number_format($data->price_t1,2)}}</p>
-		 <h6> Select a size</h6>
+	     <div class="product-name"> {{$data->name}}</div>
+	      <p class="price-label">$<span class="price-field">{{ number_format($actual_price,2)}}</span></p>
+
+	     <!--For size Options-->
+		 <h6> Select a Size</h6>
 		    <div class="options">
 		       <select id="size">
-					<option value="$2.75">SMALL(12OZ)</option>
-					<option value="$3.75">MEDIUM(16OZ)</option>
-					<option value="$4.75">LARGE(20OZ)</option>
+		       		@foreach($data->productOptions as $o)
+		       			@if ($o->option_type == 'size')
+		       				<option value="{{$o->add_on_price,2}}">{{$o->option_name}}</option>
+		       				@endif
+					@endforeach
 			   </select> 
 			</div>
+
+
 		<script language = "javascript">
-		 function show(){
-				var x = f.size;
-				var y = "The price of this size is:" + x.value;
-				var result = y.fontcolor("red");
-				var price = result.fontsize(6);
-				
-				document.getElementById("product-price").innerHTML = price;}
+		var currentPrice = $(".price-field").text();
+		var addSizePrice = 0;
+		var addOptionPrice = 0;
+		 $(document).ready(function(){
+		    $("#size").change(function(){
+		        addSizePrice = $(this).val();
+		        $(".price-field").text( parseFloat(currentPrice) + parseFloat(addSizePrice) + parseFloat(addOptionPrice));
+		    });
+		    $("#option").change(function(){
+		        addOptionPrice = $(this).val();
+		        $(".price-field").text( parseFloat(currentPrice) + parseFloat(addSizePrice) + parseFloat(addOptionPrice));
+		    });
+		});
 	    </script>
-			   <p>  </p>
-		  <h6> Options: </h6>
-		   <p> </p>
-		    <select>
-					<option value="cold">Cold</option>
-					<option value="hot">Hot</option>
-		   </select> 
+	    <p></p>
+
+	    <!-- for general options -->
+		  <h6> Select a Option: </h6>
+		  <div class="options">
+		    <select id="option">
+		       		@foreach($data->productOptions as $o)
+		       			@if ($o->option_type == 'option')
+		       				<option value="{{$o->add_on_price,2}}">{{$o->option_name}}</option>
+		       				@endif
+					@endforeach
+		   </select>
+		</div>
 	        <p> </p>
+
+
 		  <h6> Select Quantity: </h6>
 		  <p>  </p>
 		 <form id="quantity">
@@ -53,6 +75,7 @@
 	  </div>	  
 	  <div class="product-descriptions">
 	  
+	  <!-- This will be linked to the rating model -->
 	  <h2> Star Rating </h2>
 	  <span class="fa fa-star checked"></span>
 	  <span class="fa fa-star checked"></span>
@@ -63,7 +86,10 @@
 	  {!! html_entity_decode($data->description) !!}
 	  
 	  </div>
+	
 
 </div>
-</div>
+
 @include('layouts.footer')
+
+{{$data}}

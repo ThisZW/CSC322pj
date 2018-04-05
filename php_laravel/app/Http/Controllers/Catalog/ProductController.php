@@ -5,18 +5,16 @@ namespace iEats\Http\Controllers\Catalog;
 use Illuminate\Http\Request;
 use iEats\Http\Controllers\Controller;
 
-use iEats\Model\Catalog\products;
-use iEats\Model\Catalog\product_options;
-use iEats\Model\Catalog\product_option_types;
+use iEats\Model\Catalog\Product;
+use iEats\Model\Catalog\ProductOptionType;
+
 class ProductController extends Controller
 {
     
     public function getProductData($storeId,$categoryId,$productId){
-    	$product = products::where('id',$productId)->first();
-    	$product->store_id = $storeId;
-    	//$productOptions = product_options::with('product_option_types')->where('product_id',$productId)->get();
+    	$product = Product::find($productId)->first();
+ 		$product->productOptions = Product::find($productId)->productOptions;
 
-    	//$product->options = $productOptions;
     	return $product;
     }
 

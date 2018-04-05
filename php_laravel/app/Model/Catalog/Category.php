@@ -4,7 +4,7 @@ namespace iEats\Model\Catalog;
 
 use Illuminate\Database\Eloquent\Model;
 
-class categories extends Model
+class Category extends Model
 {
     public function store()
     {
