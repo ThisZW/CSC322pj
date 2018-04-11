@@ -7,14 +7,13 @@ use iEats\Http\Controllers\Controller;
 
 use iEats\Model\Catalog\Category;
 use iEats\Model\Catalog\Product;
-//use iEats\Model\Catalog\store_products;
 
 class CategoryController extends Controller
 {
 
 	/**
 	* Get all data from categories based on selected stores
-	*
+	* @param int $storeId
 	* @return iEats\Model
 	*/
 	public function getListings($storeId)
@@ -32,7 +31,7 @@ class CategoryController extends Controller
 
      /**
      * Show the Category listings based on selected store
-     *
+     * @param int $storeId
      * @return \Illuminate\Http\Response
      */
     public function index($storeId){

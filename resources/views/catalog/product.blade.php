@@ -1,4 +1,5 @@
  @include('layouts.header')
+ 
 <div class="product-container main">
 
 	<div class="breadcrumbs">This is the place for breadcrumbs!</div>
@@ -15,16 +16,18 @@
 	@endphp
 
 	<div class="product-side">
+		<form action="{{ route('addToCart')}}" method="POST" >
+				@csrf
 	     <div class="product-name"> {{$data->name}}</div>
 	      <p class="price-label">$<span class="price-field">{{ number_format($price_for_user,2)}}</span></p>
 
 	     <!--For size Options-->
 		 <h6> Select a Size</h6>
 		    <div class="options">
-		       <select id="size">
+		       <select id="size" name="option-size">
 		       		@foreach($data->productOptions as $o)
 		       			@if ($o->option_type == 'size')
-		       				<option value="{{$o->add_on_price,2}}">{{$o->option_name}}</option>
+		       				<option data-add-on="{{$o->add_on_price,2}}" value="{{$o->id}}">{{$o->option_name}}</option>
 		       				@endif
 					@endforeach
 			   </select> 
@@ -37,24 +40,25 @@
 		var addOptionPrice = 0;
 		 $(document).ready(function(){
 		    $("#size").change(function(){
-		        addSizePrice = $(this).val();
+		        addSizePrice = $(this).find(':selected').data('addOn');
 		        $(".price-field").text( parseFloat(currentPrice) + parseFloat(addSizePrice) + parseFloat(addOptionPrice));
-		    });
+		    }).trigger('change');
 		    $("#option").change(function(){
-		        addOptionPrice = $(this).val();
+		        addOptionPrice = $(this).find(':selected').data('addOn');
 		        $(".price-field").text( parseFloat(currentPrice) + parseFloat(addSizePrice) + parseFloat(addOptionPrice));
-		    });
+		    }).trigger('change');
 		});
+
 	    </script>
 	    <p></p>
 
 	    <!-- for general options -->
 		  <h6> Select a Option: </h6>
 		  <div class="options">
-		    <select id="option">
+		    <select id="option" name="option-option">
 		       		@foreach($data->productOptions as $o)
 		       			@if ($o->option_type == 'option')
-		       				<option value="{{$o->add_on_price,2}}">{{$o->option_name}}</option>
+		       				<option data-add-on="{{$o->add_on_price,2}}" value="{{$o->id}}">{{$o->option_name}}</option>
 		       				@endif
 					@endforeach
 		   </select>
@@ -63,18 +67,15 @@
 
 
 		  <h6> Select Quantity: </h6>
-		  <p>  </p>
-		 <form action="{{ url('/cart')}}" method="POST" >
+
+		<p></p>
 
                 <input type="number" value="1"  name="quantity" min="1" max="100" step="1" >
                 <input type="hidden" name="id" value="{{ $data->id }}">
-                <input type="hidden" name="name" value="{{ $data->name }}">
                 <input type="hidden" name="price" value="{{ $price_for_user }}"><br>
                 <input type="submit" class="btn btn-success btn-md add-to-cart-btn" value="Add to Cart">
 		   </form>
 	  
-	  
-		  
 	  
 	  </div>	  
 	  <div class="product-descriptions">

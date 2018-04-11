@@ -6,19 +6,26 @@ use Illuminate\Http\Request;
 use iEats\Http\Controllers\Controller;
 
 use iEats\Model\Catalog\Product;
-use iEats\Model\Catalog\ProductOptionType;
 
 class ProductController extends Controller
 {
     
+   	/**
+	* get product details.
+	* @param int $storeId, int $categoryId, int $productId
+	* @return iEats\Model
+	*/
     public function getProductData($storeId,$categoryId,$productId){
-    	$product = Product::find($productId)->first();
- 		$product->productOptions = Product::find($productId)->productOptions;
+    	$product = Product::find($productId)->with('productOptions')->first();
 
     	return $product;
     }
 
-
+   	/**
+	* Display product details.
+	* @param int $storeId, int $categoryId, int $productId
+	* @return \Illuminate\Http\Response
+	*/
     public function index($storeId,$categoryId,$productId){
     	return view('catalog.product')->with('data',$this->getProductData($storeId,$categoryId,$productId));
     }
