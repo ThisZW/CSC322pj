@@ -27,15 +27,16 @@ class CategoryController extends Controller
 			$cat->products = $products;
 		}
 		return $categories;
+		
 	}
 
 
-     /**
-     * Show the Category listings based on selected store
-     *
-     * @param int $storeId
-     * @return \Illuminate\Http\Response
-     */
+    /**
+    * Show the Category listings based on selected store
+    *
+    * @param int $storeId
+    * @return \Illuminate\Http\Response
+    */
     public function index($storeId){
     	return view('catalog.category')->with('data',$this->getListings($storeId));
     }

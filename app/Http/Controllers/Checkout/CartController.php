@@ -56,7 +56,7 @@ class CartController extends Controller
                 [product_id => xx , price => xx, quantity => xx, options => [],[],[]]
 
         */
-        if (!$request->session()->has('cart')){
+        if (!$request->session()->has('cart')){     
             $this->addProductToSession($request);
         } else {
             if($index = array_search($request->id, array_column($request->session()->get('cart'), 'product_id')) !== false){
@@ -65,8 +65,7 @@ class CartController extends Controller
                 $this->addProductToSession($request);
             }
         }
-        dd($request);
-
+        
     }
 
     /**
