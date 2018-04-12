@@ -13,6 +13,7 @@ class CategoryController extends Controller
 
 	/**
 	* Get all data from categories based on selected stores
+	*
 	* @param int $storeId
 	* @return iEats\Model
 	*/
@@ -31,10 +32,12 @@ class CategoryController extends Controller
 
      /**
      * Show the Category listings based on selected store
+     *
      * @param int $storeId
      * @return \Illuminate\Http\Response
      */
     public function index($storeId){
     	return view('catalog.category')->with('data',$this->getListings($storeId));
-    }//
+    }
+
 }

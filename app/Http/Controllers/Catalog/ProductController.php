@@ -10,23 +10,27 @@ use iEats\Model\Catalog\Product;
 class ProductController extends Controller
 {
     
-   	/**
-	* get product details.
-	* @param int $storeId, int $categoryId, int $productId
-	* @return iEats\Model
-	*/
+    /**
+    * get product details.
+    * @param int $storeId, int $categoryId, int $productId
+    * @return iEats\Model
+    */
     public function getProductData($storeId,$categoryId,$productId){
-    	$product = Product::find($productId)->with('productOptions')->first();
 
-    	return $product;
+      $product = Product::find($productId)->with('productOptions')->first();
+      return $product;
+
     }
 
-   	/**
-	* Display product details.
-	* @param int $storeId, int $categoryId, int $productId
-	* @return \Illuminate\Http\Response
-	*/
+    /**
+    * Display product details.
+    * @param int $storeId, int $categoryId, int $productId
+    * @return \Illuminate\Http\Response
+    */
     public function index($storeId,$categoryId,$productId){
-    	return view('catalog.product')->with('data',$this->getProductData($storeId,$categoryId,$productId));
+
+      return view('catalog.product')->with('data',$this->getProductData($storeId,$categoryId,$productId));
+
     }
+
 }

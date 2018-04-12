@@ -24,7 +24,7 @@
 	     <!--For size Options-->
 		 <h6> Select a Size</h6>
 		    <div class="options">
-		       <select id="size" name="option-size">
+		       <select id="size" name="option[size]">
 		       		@foreach($data->productOptions as $o)
 		       			@if ($o->option_type == 'size')
 		       				<option data-add-on="{{$o->add_on_price,2}}" value="{{$o->id}}">{{$o->option_name}}</option>
@@ -55,7 +55,7 @@
 	    <!-- for general options -->
 		  <h6> Select a Option: </h6>
 		  <div class="options">
-		    <select id="option" name="option-option">
+		    <select id="option" name="option[option]">
 		       		@foreach($data->productOptions as $o)
 		       			@if ($o->option_type == 'option')
 		       				<option data-add-on="{{$o->add_on_price,2}}" value="{{$o->id}}">{{$o->option_name}}</option>
