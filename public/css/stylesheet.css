@@ -226,3 +226,26 @@ font-size: 15px
 .add-to-cart-btn{
 	margin-top:10px;
 }
+
+.shopping-cart{
+	width: 1000px;
+	margin: auto;
+	border-right: 1px solid #000;
+	border-left: 1px solid #000;
+	padding: 0;
+}
+.in-cart{
+	margin: 0;
+	width: 650px;
+	border-right: 1px solid none;
+	float:left;
+	padding: 20px 38px 10px 20px;
+}
+
+.summary{
+	margin: 0;
+	width: 350px;
+	float: right;
+	padding: 10px 10px 10px 10px;
+	
+}
