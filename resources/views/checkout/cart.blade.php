@@ -59,7 +59,7 @@
 				   <div class="total-price">$5.75</div>
 				</td>
 			 </tr>
-		</tbody>
+		</tbody> co   
 		
 		<tfoot>
 		     <tr class = "first last">
