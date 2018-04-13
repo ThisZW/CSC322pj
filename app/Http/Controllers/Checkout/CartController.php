@@ -5,8 +5,8 @@ namespace iEats\Http\Controllers\Checkout;
 use Illuminate\Http\Request;
 use iEats\Http\Controllers\Controller;
 
-use iEats\Model\Checkout\CartProduct;
-use iEats\Model\Checkout\CartOption;
+use iEats\Model\Catalog\ProductOption;
+use iEats\Model\Catalog\Product;
 
 class CartController extends Controller
 {
@@ -18,15 +18,25 @@ class CartController extends Controller
     * @return void
     */
     public function addProductToSession(Request $request){
-
+        $optionString = 'Options: ';
+        $priceAfterAddOns = $request->price;
+        foreach($request->option as $oid){
+            $o = ProductOption::find($oid);
+            $optionString = $optionString . $o->option_type . "," . $o->option_name . '. ';
+            $priceAfterAddOns += $o->add_on_price;
+        }
         $cartProduct = [
             'product_id' => $request->id,
-            'price' => $request->price,
+            'name' => $request->name,
+            'option_string' =>$optionString,
+            'price' => $priceAfterAddOns,
             'quantity' => $request->quantity,
             'options' => $request->option,
             ];
         $request->session()->push('cart', $cartProduct);
     }
+
+
 
     /**
     * update product quantity of cart in session
@@ -43,17 +53,27 @@ class CartController extends Controller
 
     }
 
+
+
+    /**
+    *
+    *checkout/cart "delete button" get action method, delete selected product in session
+    *@param Illuminate\Http\Request $request
+    *@return \Illuminate\Http\Response (index)
+    */
     public function buttonDeleteCartProductAction(Request $request){
+        $index = array_search($request->delete_id, array_column($request->session()->get('cart'), 'product_id'));
         $cart = $request->session()->get('cart');
-        foreach ($cart as $p){
-            if ($p['product_id'] == $request->id);
-        }
+        unset($cart[$index]);
+        return $this->index();
     }
+
+
     /**
     * catalog/product "add to cart" post action method, add/update product in session
     *
     * @param Illuminate\Http\Request $request
-    * @return void
+    * @return \Illuminate\Http\Response (index)
     */
     public function buttonAddToCartAction(Request $request){
 
@@ -64,27 +84,37 @@ class CartController extends Controller
         */
         if (!$request->session()->has('cart')){     
             $this->addProductToSession($request);
-        } else {
-            if($index = array_search($request->id, array_column($request->session()->get('cart'), 'product_id')) !== false){
-                $this->updateProductQuantityInSession($request, $index);
-            } else {
-                $this->addProductToSession($request);
+        } 
+        else {
+            $index = 0;
+            $hasDuplicate = false;
+            foreach(session()->get('cart') as $sp){
+                if($sp['product_id'] == $request->id && $sp['options'] == $request->option){
+                    $this->updateProductQuantityInSession($request, $index);
+                    $hasDuplicate = true;
+                }
+                $index++;
             }
-        }
+            if (!$hasDuplicate) $this->addProductToSession($request);
+            /*if($index = array_search($request->id, array_column(session()->get('cart'), 'product_id')) !== false){
+                if (session()->get('cart')[$index]['options'] == $request->option)
+                    $this->updateProductQuantityInSession($request, $index);*/
+        } 
+        return $this->index();
         
     }
+
+
+
 
     /**
     * Display Cart pge.
     *
-    * @param Illuminate\Http\Request $request
+    * @param 
     * @return \Illuminate\Http\Response
     */
-    public function index(Request $request){
-
-        $data = $request->all();
-        return view('checkout.cart')->with('request', $request);
-
+    public function index(){
+        return view('checkout.cart');   
     }
 
     /**
@@ -93,7 +123,9 @@ class CartController extends Controller
     * @param Illuminate\Http\Ruquest $request
     * @return void
     */
-    public function test(Request request){
-
+    public function test(Request $request){
+        //session()->flush();
+        //$this->processSessionData($request);
+        //dd($request);
     }
 }

@@ -32,3 +32,5 @@ Route::get('/stores/{storeId}/menu/{categoryId}/product/{productId}','Catalog\Pr
 Route::get('/cart', 'Checkout\CartController@index');
 
 Route::post('/cart', 'Checkout\CartController@buttonAddToCartAction')->name('addToCart');
+
+Route::get('/cart/test', 'Checkout\CartController@test');

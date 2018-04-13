@@ -1,2 +1,2 @@
 
-{{dd($request)}}
+<pre>{{ print_r(session()->all())}}</pre>

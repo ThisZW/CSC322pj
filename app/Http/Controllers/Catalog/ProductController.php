@@ -17,7 +17,7 @@ class ProductController extends Controller
     */
     public function getProductData($storeId,$categoryId,$productId){
 
-      $product = Product::find($productId)->with('productOptions')->first();
+      $product = Product::with('productOptions')->find($productId);
       return $product;
 
     }

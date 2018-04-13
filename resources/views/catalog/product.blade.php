@@ -72,6 +72,7 @@
 
                 <input type="number" value="1"  name="quantity" min="1" max="100" step="1" >
                 <input type="hidden" name="id" value="{{ $data->id }}">
+                <input type="hidden" name="name" value="{{ $data->name}}">
                 <input type="hidden" name="price" value="{{ $price_for_user }}"><br>
                 <input type="submit" class="btn btn-success btn-md add-to-cart-btn" value="Add to Cart">
 		   </form>
