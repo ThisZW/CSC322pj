@@ -43,6 +43,12 @@ class CartController extends Controller
 
     }
 
+    public function buttonDeleteCartProductAction(Request $request){
+        $cart = $request->session()->get('cart');
+        foreach ($cart as $p){
+            if ($p['product_id'] == $request->id);
+        }
+    }
     /**
     * catalog/product "add to cart" post action method, add/update product in session
     *
@@ -69,7 +75,7 @@ class CartController extends Controller
     }
 
     /**
-    * Display Cart page.
+    * Display Cart pge.
     *
     * @param Illuminate\Http\Request $request
     * @return \Illuminate\Http\Response
@@ -81,4 +87,13 @@ class CartController extends Controller
 
     }
 
+    /**
+    * Test method
+    *
+    * @param Illuminate\Http\Ruquest $request
+    * @return void
+    */
+    public function test(Request request){
+
+    }
 }
