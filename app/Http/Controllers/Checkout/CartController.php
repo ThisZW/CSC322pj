@@ -105,7 +105,22 @@ class CartController extends Controller
     }
 
 
-
+    /**
+    * Calculate subtotal
+    *
+    * @param 
+    * @return null
+    */
+    public function getSubtotal(){
+        $total = 0;
+        if (session()->has('cart')){
+            foreach(session()->get('cart') as $sp){
+                $total += $sp['price'] * $sp['quantity'];
+            }
+            session()->put('subtotal', $total);
+        }
+        
+    }
 
     /**
     * Display Cart pge.
@@ -114,6 +129,7 @@ class CartController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function index(){
+        $this->getSubtotal();
         return view('checkout.cart');   
     }
 
