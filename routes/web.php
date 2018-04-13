@@ -34,3 +34,7 @@ Route::get('/cart', 'Checkout\CartController@index');
 Route::post('/cart', 'Checkout\CartController@buttonAddToCartAction')->name('addToCart');
 
 Route::get('/cart/test', 'Checkout\CartController@test');
+
+Route::get('/checkout', function(){
+	return view('checkout/checkout');
+});
