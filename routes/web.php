@@ -37,4 +37,4 @@ Route::get('/cart/test', 'Checkout\CartController@test');
 
 Route::get('/checkout', function(){
 	return view('checkout/checkout');
-});
+})->name('checkout');

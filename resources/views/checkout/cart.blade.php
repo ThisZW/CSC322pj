@@ -1,20 +1,9 @@
  @include('layouts.header')
- <style>
-   thead {color: black;}
-   table, th, td {border: 2px solid black;}
-   table {width: 600px;}
-   .center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    } 
-	
- </style>
 <div class="shopping-cart">
    <div class="cart">
     <h1>Shopping Cart </h1>
 	
-	<table>
+	<table class="cart-main-table">
 	   <thead>
 	      <tr class="first last">
 		       <th rowspan = "1"></th>
@@ -47,19 +36,15 @@
 				   </span>
 				</td>
 				<td>
-				   <div class = "qty-holder">
-				   <button class="plus-btn" type="button" name="button">
-                   </button>
-                   <input type="text" name="name" value="1">
-                   <button class="minus-btn" type="button" name="button">
-				   </button>
+				   <div class="qty-holder">
+                   <input type="number" name="name" value="1">
 					</div>
 				</td>
 				<td>
 				   <div class="total-price">$5.75</div>
 				</td>
 			 </tr>
-		</tbody> co   
+		</tbody>
 		
 		<tfoot>
 		     <tr class = "first last">

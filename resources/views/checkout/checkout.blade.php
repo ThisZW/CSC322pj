@@ -96,3 +96,4 @@ Address
 
 -->
 @include('layouts.footer')
+<pre>{{ print_r(session()->all())}}</pre>
