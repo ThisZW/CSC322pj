@@ -35,6 +35,19 @@ Route::post('/cart', 'Checkout\CartController@buttonAddToCartAction')->name('add
 
 Route::get('/cart/test', 'Checkout\CartController@test');
 
+Route::get('/myaccount', function(){
+	return view('account/account');
+})->name('myAccount');//'Account\AccountController@index')->name('My Account');
+
+Route::get('/myaccount/orders', function(){
+	return view('account/orders');
+})->name('myOrders');
+
+Route::get('/myaccount/orders/{orderId}','AccountController@getOrderDetailsView')->name('orderDetails');
+
+
+
+
 Route::get('/checkout', function(){
 	return view('checkout/checkout');
 })->name('checkout');
