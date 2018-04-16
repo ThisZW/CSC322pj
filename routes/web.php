@@ -29,6 +29,8 @@ Route::get('/stores/{storeId}/menu','Catalog\CategoryController@index');
 
 Route::get('/stores/{storeId}/menu/{categoryId}/product/{productId}','Catalog\ProductController@index');
 
+
+
 Route::get('/cart', 'Checkout\CartController@index');
 
 Route::post('/cart', 'Checkout\CartController@buttonAddToCartAction')->name('addToCart');
@@ -43,9 +45,9 @@ Route::get('/myaccount/orders', function(){
 	return view('account/orders');
 })->name('myOrders');
 
-Route::get('/myaccount/orders/{orderId}','AccountController@getOrderDetailsView')->name('orderDetails');
+Route::get('/myaccount/orders/{orderId}','Account\AccountController@getOrderDetailsView')->name('orderDetails');
 
-
+Route::get('/checkout/place-order-test', 'Checkout\CheckoutController@placeOrderAction');
 
 
 Route::get('/checkout', function(){

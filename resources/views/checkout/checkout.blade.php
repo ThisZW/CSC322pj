@@ -1,8 +1,7 @@
 @include('layouts.header')
 
-<!-- <div class="checkout-container main">
-fjdksaljfdkl;sajfkdsaljfal;
-</div>  -->
+<div class="checkout-container main">
+ 
 <div class="row">
   <div class="col-75">
     <div class="container">
@@ -59,7 +58,7 @@ fjdksaljfdkl;sajfkdsaljfal;
   </div>
 
 </div>
-
+</div> 
 <!--
 Delivery Information
 ______
