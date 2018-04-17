@@ -25,6 +25,7 @@ class CartController extends Controller
             $optionString = $optionString . $o->option_type . "," . $o->option_name . '. ';
             $priceAfterAddOns += $o->add_on_price;
         }
+        
         $cartProduct = [
             'product_id' => $request->id,
             'name' => $request->name,
@@ -35,6 +36,7 @@ class CartController extends Controller
             ];
         $request->session()->push('cart', $cartProduct);
     }
+
 
 
     /**
@@ -51,6 +53,7 @@ class CartController extends Controller
         $request->session()->put('cart', $cart);
 
     }
+
 
 
     /**
@@ -74,6 +77,7 @@ class CartController extends Controller
     * @return \Illuminate\Http\Response (index)
     */
     public function buttonAddToCartAction(Request $request){
+
         /*session
             cart
                 [product_id => xx , price => xx, quantity => xx, options => [],[],[]]
@@ -119,7 +123,6 @@ class CartController extends Controller
         
     }
 
-
     /**
     * Display Cart pge.
     *
@@ -130,7 +133,6 @@ class CartController extends Controller
         $this->getSubtotal();
         return view('checkout.cart');   
     }
-
 
     /**
     * Test method

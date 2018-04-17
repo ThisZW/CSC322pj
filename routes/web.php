@@ -53,3 +53,5 @@ Route::get('/checkout/place-order-test', 'Checkout\CheckoutController@placeOrder
 Route::get('/checkout', function(){
 	return view('checkout/checkout');
 })->name('checkout');
+
+Route::post('/placeOrder', 'Checkout\CheckoutController@placeOrderAction')->name('placeOrder');
