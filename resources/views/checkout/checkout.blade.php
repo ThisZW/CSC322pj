@@ -12,17 +12,13 @@
           @endif
         <div class="row">
           <div class="col-md-12">
-            <h3><b>Billing Address</b></h3>
+            <h3><b>Billing Information</b></h3>
             <div class="form-group row">
               <div class="col-md-6">
               <label for="fname"><i class="fa fa-user"></i> Full Name</label>
               <input type="text" id="fname" name="firstname" placeholder="Cesar M De">
-              <label for="email"><i class="fa fa-envelope"></i> Email</label>
-              <input type="text" id="email" name="email" placeholder="TheCityClass@example.com">
             </div>
               <div class="col-md-6">
-              <label for="address"><i class="fa fa-map-marker"></i> Address</label>
-              <input type="text" id="address" name="address" placeholder="542 W. 15th Street">
               <label for="phone-number"><i class="fa fa-phone"></i> Phone number</label>
               <input type="text" id="phone-number" name="phone-number" placeholder="212-008-774">
             </div>
@@ -32,7 +28,7 @@
           </div>
           
           <div class="col-md-12">
-            <h3><strong>Order Summary</strong></h3>
+            <h3><strong>Payments</strong></h3>
           <p>
           </p>  
           <label for="payment_method"><i class="fa fa-credit-card"></i> Payment Method</label>
@@ -44,9 +40,9 @@
           <p>
           </p>
 
-            <label for="cname">Promo Code</label>
-            <input type="text" id="cname" name="cardname" placeholder="YAYROUGE">
-            
+            <!-- <label for="cname">Promo Code</label>
+            <input type="text" id="cname" name="cardname" placeholder="YAYROUGE"> -->
+            <br><br>
             <h4><b>Order</b></h4>
             <h6>Merchandise Subtotal</h6>
             <h6>Shopping and Handling:&#160;<b>TBA</b></h6>
@@ -57,7 +53,7 @@
 
         </div>
         <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+         <!--  <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing -->
         </label>
         <input type="submit" value=" Checkout With Paypal" class = "btc">
         
