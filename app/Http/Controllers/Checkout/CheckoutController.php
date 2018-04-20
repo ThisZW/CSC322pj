@@ -14,6 +14,12 @@ class CheckoutController extends Controller
 		//no index yet, everything is inside the session.
 	}
 
+
+	/**
+	*store order details into database from session of cart
+	*@param  none
+	*@return void
+	*/
 	public function setOrder(){
 		$subtotal = session()->get('subtotal');
 		$user_id = Auth::id();
@@ -37,6 +43,11 @@ class CheckoutController extends Controller
 	}
 
 
+	/**
+	*set order after registration/logged in customer
+	*@param none
+	*@return void
+	*/
 	public function placeOrderAction(){
 		if (Auth::guest()){
 			//do registration for him and do the rest
