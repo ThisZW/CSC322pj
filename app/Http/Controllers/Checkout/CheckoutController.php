@@ -5,8 +5,12 @@ namespace iEats\Http\Controllers\Checkout;
 use Illuminate\Http\Request;
 use iEats\Http\Controllers\Controller;
 use Auth;
+use iEats\User;
 use iEats\Model\Order\Order;
 use iEats\Model\Order\OrderProduct;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
 class CheckoutController extends Controller
 {
    
@@ -42,18 +46,49 @@ class CheckoutController extends Controller
 		}
 	}
 
-
 	/**
 	*set order after registration/logged in customer
 	*@param none
 	*@return void
 	*/
-	public function placeOrderAction(){
+	public function placeOrderAction(Request $request){
 		if (Auth::guest()){
-			//do registration for him and do the rest
+			$data = [
+				'username' => $request->username,
+				'role' => 'customer',
+				'email' => $request->email,
+				'password' => $request->password,
+				'name' => $request->name,
+			];
+			if ($this->validateRegistration($data) != false){
+				$user = $this->create($data);
+				Auth::login($user);
+			}
 		}
 
 		$this->setOrder();
+		return view('checkout.success');
 	}
+
+	public function validateRegistration($data){
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'role' => 'required|string',
+        ]);
+    }
+
+    protected function create(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role' => $data['role'],
+            'username' =>$data['username'],
+        ]);
+    }
 
 }
