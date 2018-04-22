@@ -5,22 +5,25 @@
 <div class="row">
   <div class="col-75">
     <div class="container">
+      @if (session()->has('cart'))
       <form method="POST" action="{{ route('placeOrder')}}">
         @csrf
+        {{$register = 0}}
         @if (Auth::guest())
           @include('checkout.on-checkout-register')
+          {{$register = 1}}
           @endif
         <div class="row">
           <div class="col-md-12">
             <h3><b>Billing Information</b></h3>
             <div class="form-group row">
               <div class="col-md-6">
-              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="Cesar M De">
+              <label for="name"><i class="fa fa-user"></i> Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Cesar M De">
             </div>
               <div class="col-md-6">
               <label for="phone-number"><i class="fa fa-phone"></i> Phone number</label>
-              <input type="text" id="phone-number" name="phone-number" placeholder="212-008-774">
+              <input type="text" id="phone_number" name="phone_number" placeholder="212-008-774">
             </div>
           </div>
 
@@ -60,6 +63,9 @@
         <input type="submit" value=" Checkout With Paypal" class = "btc">
         
       </form>
+      @else
+      {{"Your shopping cart is empty!"}}
+      @endif
     </div>
   </div>
 
