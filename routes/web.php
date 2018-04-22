@@ -37,9 +37,7 @@ Route::post('/cart', 'Checkout\CartController@buttonAddToCartAction')->name('add
 
 Route::get('/cart/test', 'Checkout\CartController@test');
 
-Route::get('/myaccount', function(){
-	return view('account/account');
-})->name('myAccount');//'Account\AccountController@index')->name('My Account');
+Route::get('/myaccount', 'Account\AccountController@index' )->name('myAccount');
 
 Route::get('/myaccount/orders', function(){
 	return view('account/orders');

@@ -37,23 +37,20 @@
                             <div class="col-md-8">
                                 <h2><strong>Personal Information</strong></h2>
                                 <div class="col-50">
-                                    <label for="fname"><i class="fa fa-user"></i> Full Name</label><br>
-                                    <input type="text" id="fname" name="firstname" placeholder="Cesar M De"><br>
+                                    <label for="name"><i class="fa fa-user"></i> Full Name</label><br>
+                                    <input type="text" id="name" name="name" value="{{$data->name}}"><br>
                                     <label for="email"><i class="fa fa-envelope"></i> Email</label><br>
-                                    <input type="text" id="email" name="email" placeholder="TheCityClass@example.com"><br>
-                                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label><br>
-                                    <input type="text" id="adr" name="address" placeholder="542 W. 15th Street"><br>
-                                    <label for="city"><i class="fa fa-institution"></i> Phone number</label><br>
-                                    <input type="text" id="city" name="city" placeholder="212-008-774"><br>
-
-                                    <label for="fname"><i class="fa fa-user"></i> Registeration Data</label><br>
-                                    <input type="text" id="fname" name="firstname" placeholder="You Cannot Change"><br>
-                                    <label for="email"><i class="fa fa-envelope"></i>Rating</label><br>
-                                    <input type="text" id="email" name="email" placeholder="You Might Enter a Number between 1-5 "><br>
-                                    <label for="adr"><i class="fa fa-address-card-o"></i> VIP</label><br>
-                                    <input type="text" id="adr" name="address" placeholder="You Cannot Change"><br>
-                                    <label for="city"><i class="fa fa-institution"></i>Role</label><br>
-                                    <input type="text" id="city" name="city" placeholder="You Cannot Change"><br>
+                                    <input type="text" id="email" name="email" value="{{$data->email}}"><br>
+                                    <label for="adress"><i class="fa fa-address-card-o"></i> Address</label><br>
+                                    <input type="text" id="adrress" name="address" value="{{$data->address}}"><br>
+                                    <label for="phone"><i class="fa fa-institution"></i> Phone number</label><br>
+                                    <input type="text" id="phone" name="phone" value="{{$data->phone_number}}"><br>
+                                    <label for="rating"><i class="fa fa-envelope"></i>Rating</label><br>
+                                    <input type="text" id="rating" name="rating" value="{{$data->rating}}" readonly><br>
+                                    <label for="vip"><i class="fa fa-address-card-o"></i> VIP</label><br>
+                                    <input type="text" id="vip" name="vip" value="{{$data->vip}}" readonly><br>
+                                    <label for="role"><i class="fa fa-institution"></i>Role</label><br>
+                                    <input type="text" id="role" name="role" value="{{$data->role}}" readonly><br>
                                     &#160;&#160;&#160;
                                     &#160;&#160;&#160;<div class="row">
                                         &#160;&#160;&#160;<input type="submit" value="Save">
