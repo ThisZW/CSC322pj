@@ -68,10 +68,9 @@ class CheckoutController extends Controller
 			}
 		}
 
-		$this->setOrder($request);
+		$this->setOrder();
 		return view('checkout.success');
 	}
-
 
 	public function validateRegistration($data){
         return Validator::make($data, [
@@ -82,7 +81,6 @@ class CheckoutController extends Controller
             'role' => 'required|string',
         ]);
     }
-
 
     protected function create(array $data)
     {

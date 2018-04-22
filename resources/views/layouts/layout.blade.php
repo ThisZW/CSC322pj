@@ -1,20 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Marketplace
-Explore
- @ThisZW
-Sign out
-1
-0 0 ThisZW/DeliverySystemProject-csc322
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights  Settings
-DeliverySystemProject-csc322/resources/views/layouts/layout.blade.php
-259c727  22 hours ago
-@ThisZW ThisZW checkout registration/add to cart controller implemented
-      
-153 lines (132 sloc)  6.44 KB
 <!-- header.blade.php -->
 
 <!doctype html>
@@ -167,4 +150,5 @@ DeliverySystemProject-csc322/resources/views/layouts/layout.blade.php
         </div>
     </div>
 </body>
+
 </html>
