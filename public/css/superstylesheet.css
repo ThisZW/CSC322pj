@@ -194,6 +194,9 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
+/**************************/
+p.solid{border-style:solid;}
+
 
 /*************Order Detail*************************************/
 x-star-rating {
