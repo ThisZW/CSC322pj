@@ -11,6 +11,7 @@ use iEats\Model\Order\OrderProduct;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+
 class CheckoutController extends Controller
 {
    
@@ -68,7 +69,7 @@ class CheckoutController extends Controller
 			}
 		}
 
-		$this->setOrder();
+		$this->setOrder($request);
 		return view('checkout.success');
 	}
 
