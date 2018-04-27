@@ -1,0 +1,361 @@
+[33mcommit 947f532c63606f664e2e9ac94e4231bc8915288f[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Apr 20 02:18:56 2018 -0400
+
+    account page fix
+
+[33mcommit 9f7dbf81872ebb629073441b43131853b8b3d563[m
+Merge: 799d7b2 4a4d9b9
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Apr 20 00:52:00 2018 -0400
+
+    merge done
+
+[33mcommit 4a4d9b9fa9676f7b52744a718c1565d1deebc284[m
+Author: Lori lin <lori@Loris-MacBook-Pro.local>
+Date:   Fri Apr 20 00:49:15 2018 -0400
+
+    account
+
+[33mcommit b61bccbd380bd3abdfa92532c849c3eaca6bbfe8[m
+Author: Lori lin <lori@Loris-MacBook-Pro.local>
+Date:   Thu Apr 19 20:48:45 2018 -0400
+
+    account website
+
+[33mcommit 799d7b2aaf059ea9b0a4a15529076adda9f68f7f[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Wed Apr 18 02:06:03 2018 -0400
+
+    still everything in progress
+
+[33mcommit b57ccce671036e53b1efce366484ef517415f51e[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Mon Apr 16 21:06:46 2018 -0400
+
+    cart/checkout inprogress
+
+[33mcommit 084649e9ef612b0013de2041096482608c34d24d[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Mon Apr 16 01:44:11 2018 -0400
+
+        cart/order/check in progress
+    .
+
+[33mcommit 4407c90f082c1009e9ef8c721e9960f187c5ad54[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Sat Apr 14 23:36:46 2018 -0400
+
+    account templates init.
+
+[33mcommit f136dc31345888e6467c05c9fae2af5df24b571c[m
+Merge: bb53bbd 8fc3016
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Sat Apr 14 22:32:49 2018 -0400
+
+    hi
+    Merge branch 'jinyun' of github.com:ThisZW/CSC322pj
+
+[33mcommit 8fc3016098c7d2318513563fc7184fda31b965fd[m
+Author: Lori lin <lori@Loris-MacBook-Pro.local>
+Date:   Sat Apr 14 11:00:42 2018 -0400
+
+    checkout website third
+
+[33mcommit d2b63930730aa805ec175c8e0f30c95f9ec1eb36[m
+Author: Lori lin <lori@Loris-MacBook-Pro.local>
+Date:   Sat Apr 14 10:50:50 2018 -0400
+
+    checkout website secondone
+
+[33mcommit 4057a3a0c7f2732654d960a1667da2151bc2ac69[m
+Author: Lori lin <lori@Loris-MacBook-Pro.local>
+Date:   Sat Apr 14 10:38:00 2018 -0400
+
+    comment checkout website
+
+[33mcommit bb53bbde5f48c874c202324c6b6da2d218a752e0[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Sat Apr 14 02:58:09 2018 -0400
+
+    cart/order/check in progress
+
+[33mcommit cc4ec878cc0dda77231cfcd5b8a380b29860cfd2[m
+Author: Lori lin <lori@Loris-MacBook-Pro.local>
+Date:   Fri Apr 13 14:29:56 2018 -0400
+
+    comments
+
+[33mcommit 37bc19f5c9b2139b7c3ca45c2c7e4929cb245f55[m
+Author: Lori lin <lori@Loris-MacBook-Pro.local>
+Date:   Fri Apr 13 13:13:59 2018 -0400
+
+    checkout template init
+
+[33mcommit 143eb99c7f0629fa0d8b91d79e3050111212b05e[m
+Author: JinYunLiu123 <jliu002@citymail.cuny.edu>
+Date:   Fri Apr 13 12:05:07 2018 -0400
+
+    testing
+
+[33mcommit 4a1a8c5ef872742a0dd0d3aca0759665c86a4f05[m
+Author: JinYunLiu123 <jliu002@citymail.cuny.edu>
+Date:   Fri Apr 13 12:02:47 2018 -0400
+
+    shopping cart template init.
+
+[33mcommit ef75288be9e67921a4ccce4c01d6ed858711e7c3[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Apr 13 02:17:15 2018 -0400
+
+    subtotal added
+
+[33mcommit 6242af458127a4db8507783f5edc0948caf62b50[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Apr 13 02:10:38 2018 -0400
+
+    CartController first phase completed
+
+[33mcommit 899e9cff81a5f3a27818211f15538a07f8fc3dd6[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Thu Apr 12 20:12:05 2018 -0400
+
+    .
+
+[33mcommit 4f075571295333207627c97caf015076290bebde[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Thu Apr 12 02:06:03 2018 -0400
+
+    header add cart shorcut
+
+[33mcommit 77a6f63ee9fa1ac2492b5157179fb121dc74a69d[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Thu Apr 12 01:54:19 2018 -0400
+
+    cart controller in progress
+
+[33mcommit 9974ef392b9ce1a16916512f058ad9af9acc4069[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Wed Apr 11 17:44:24 2018 -0400
+
+    cart/session in progress
+
+[33mcommit 4b865127c1f84317d4dadca081bc0c93a278d43a[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Wed Apr 11 12:38:27 2018 -0400
+
+    debug 2
+
+[33mcommit f11394ef64bb63095f220c9dd4e13c16fac3330e[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Wed Apr 11 12:36:39 2018 -0400
+
+    key debug
+
+[33mcommit 13346e610ead47a25808849e8eb47171875aa315[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Wed Apr 11 03:35:27 2018 -0400
+
+    root folder changed, account into 2 types, checkout/cart module in progress
+
+[33mcommit 0510edf6d72d39c58d8997f84fbe948c59b48778[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Thu Apr 5 04:18:08 2018 -0400
+
+    Model renaming, catalog model almost done, gotta start account model tomorrow 4-4-2018
+
+[33mcommit 2823e0b175f0f1788971decdafdb94f06c25bd45[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Wed Apr 4 15:05:12 2018 -0400
+
+    some debug
+
+[33mcommit af6bbf8de3199ddf26b9e786302ff89bd5a91e06[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Tue Apr 3 18:54:24 2018 -0400
+
+    merge debug
+
+[33mcommit 4fc4edebbf8f5b3e43ce2ecafc4430221cde5c7b[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Tue Apr 3 18:52:13 2018 -0400
+
+    some debug
+
+[33mcommit 59ed02f29f073deb1fb190721a37948f1e702a8b[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Tue Apr 3 18:51:07 2018 -0400
+
+    some debug
+
+[33mcommit df8941ae02463ed0b6b7e2bb28cdd080fbf632f6[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Tue Apr 3 18:47:22 2018 -0400
+
+    some debug
+
+[33mcommit 5f6e6afc7caf78cbeb2f64676081bde2af7bbb61[m
+Merge: 881bf44 38ba207
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Tue Apr 3 04:15:59 2018 -0400
+
+    Merge branch 'master' of github.com:ThisZW/CSC322pj
+
+[33mcommit 881bf44bfcdb5f3cd069d78d828d7d6e4d68c9a7[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Mon Mar 19 02:53:36 2018 -0400
+
+    Catalog model almost completed, and still working on relating the models and make the product options work.
+
+[33mcommit 38ba2073ba2d51dc47b73c8baa2e1f579a6ee3a9[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Tue Apr 3 04:05:09 2018 -0400
+
+    merge commits
+
+[33mcommit 83b18f92558d94bf1ecad489e57eb5217e586950[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Tue Apr 3 03:46:48 2018 -0400
+
+    currently working on model relationships/product options
+
+[33mcommit b32e37df4658af8dccfeb1ca9bb7d7b77fd21f06[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Tue Apr 3 02:38:41 2018 -0400
+
+    product page
+
+[33mcommit 8d36a8021c7f060321383fc7abf67dfb8df4f42f[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Sun Apr 1 03:45:19 2018 -0400
+
+    menu page done
+
+[33mcommit 3629937a6442687bcc1cf278357932012b92b81d[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Mar 23 13:58:14 2018 -0400
+
+    3-23 push during meeting
+
+[33mcommit 0e0ddb20c7fbf3000bd831c995e106ecee8992ef[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Mon Mar 19 02:53:36 2018 -0400
+
+    catalog models in /contrntrollers in progress. 3-19
+
+[33mcommit 226894f01babdf96bd63b37e39c4680ca80d3f91[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Sun Mar 18 03:20:27 2018 -0400
+
+    main page added, catalog controller init
+
+[33mcommit f9c0c192f013437ce896770ee5943b6368054da6[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Sun Mar 18 01:10:20 2018 -0400
+
+    3-18
+
+[33mcommit b985f216f7ad3bef327c6f47db3c835b879f2744[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Mar 16 12:44:47 2018 -0400
+
+    .env edited
+
+[33mcommit c0893522a3adbdbe617228a5f82edc778e2fba18[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Mar 16 12:42:17 2018 -0400
+
+    .env edited
+
+[33mcommit 742ef56b64b05770562da096e4797f9f322e26de[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Mar 16 03:14:51 2018 -0400
+
+    laravel 5.6 installed
+
+[33mcommit b096b867e71073cef81cffe0f5f8bbaaad265bda[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Mar 16 02:11:44 2018 -0400
+
+    laravel folder added
+
+[33mcommit 00de6e49b168acd2bc2f6fd0d23faef194ebc2d5[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Mar 16 02:11:33 2018 -0400
+
+    laravel
+
+[33mcommit d65f829f66f6fa618472d9fa45e47ce67557fd64[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Mar 16 01:38:28 2018 -0400
+
+    OK ...... I am about to switch to PHP lavarel.......
+
+[33mcommit 266130546944fcff2f2cc5c63cb7262c78937a28[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Mon Mar 12 01:38:22 2018 -0400
+
+    account db tested and created.
+
+[33mcommit 602d5392088499b1ba9b7a02a69551e7a667c973[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Sun Mar 11 14:37:26 2018 -0400
+
+    move all apps into apps folder (apps is the name of the project)
+
+[33mcommit 8b4f1286af0ff28117daae5a9ddf7da846888c9d[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Sun Mar 11 03:22:47 2018 -0400
+
+    apinit some apps, db connected to aws, new template.
+
+[33mcommit 011fea1ae95f83723dc1545a118f6dd64933c59d[m
+Merge: 16be648 d61e818
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Mar 9 23:07:44 2018 -0500
+
+    Merge branch 'master' of github.com:ThisZW/CSC322pj
+    
+    ??
+
+[33mcommit 16be648eb9c7bb922000df102e02f8cf2117e92e[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Fri Mar 9 23:07:19 2018 -0500
+
+    index page modified
+
+[33mcommit d61e818f76906b404e6f97e6cd89bbf4bca79306[m
+Author: JinYunLiu123 <jliu002@citymail.cuny.edu>
+Date:   Fri Mar 9 14:07:22 2018 -0500
+
+    Added README file
+
+[33mcommit f477abd8ed358e9797f7bd696da761476798eafc[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Thu Mar 8 01:22:27 2018 -0500
+
+    A template of this pj has been selected and I put it in the root directory of this pj, and we will be using these source code for frontend.
+
+[33mcommit 90d226ff12d677b8c4868587ad8c54cd5faa546a[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Tue Mar 6 02:16:45 2018 -0500
+
+    Finally static files 404 err has been fixed even though I don't know what excatly I did lololololol
+
+[33mcommit 3724f7dbfc020f41ac728c1e53b1f44db90b78a6[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Mon Mar 5 00:47:39 2018 -0500
+
+    modifying header and some css
+
+[33mcommit 38201ec7ebeeb0c2d373d7fe55a29ed870b634e2[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Sun Mar 4 16:09:11 2018 -0500
+
+    main app created for index page
+
+[33mcommit e04cd4fa8ad55cd57a43ccc911c68a2ab3afad89[m
+Author: ThisZW <everbread1234@gmail.com>
+Date:   Sun Mar 4 14:08:41 2018 -0500
+
+    first push of this project
