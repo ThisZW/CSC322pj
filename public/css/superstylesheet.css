@@ -194,5 +194,54 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
+/**************************/
+p.solid{border-style:solid;}
 
+
+/*************Order Detail*************************************/
+x-star-rating {
+  font-family: "Ionicons";
+  font-size: 15px;
+  display: inline-flex;
+}
+x-star-rating > .star:after {
+  content:"\f3ae";
+  color:#777;
+}
+x-star-rating > .star.full:after{
+  content:"\f2fc";
+  color:#fd0;
+}
+
+
+table.table1{
+  border:2px solid black;
+  text-align: center;
+}
+table.table1 td{
+  padding: 10px 20px;
+  border:2px solid black;
+  text-align: center;
+}
+
+table.table1 th{
+  border:2px solid black;
+  text-align: center;
+  padding: 10px 20px;
+  background-color: lightgray;
+}
+
+
+
+table.table2 td{
+  padding: 10px 100px;
   
+}
+
+table.table2 th{
+  
+  padding: 10px;
+  
+}
+
+
