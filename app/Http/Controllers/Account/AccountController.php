@@ -21,7 +21,8 @@ class AccountController extends Controller
 
     public function getLastOrderInfo(){
     	if (Order::where('user_id', Auth::id())->count() > 0){
-	    	$order = Order::where('user_id', Auth::id())->max('id');
+	    	$order = Order::where('user_id', Auth::id())->orderBy('id', 'desc')->first();
+            //dd($order);
 	    	return [
 	    		"phone_number" => $order->phone_number,
 	    		"name"		  => $order->order_name,
