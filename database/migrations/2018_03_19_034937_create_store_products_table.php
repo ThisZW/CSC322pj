@@ -19,7 +19,7 @@ class CreateStoreProductsTable extends Migration
             $table->decimal('price_for_visitor');
             $table->decimal('price_for_customer');
             $table->decimal('price_for_vip');
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 

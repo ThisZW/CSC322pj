@@ -290,3 +290,16 @@ font-size: 15px
 	border-radius: 8px;s
 }
 
+#draw_area{
+	width:872px;
+	margin:auto;
+}
+
+.btn-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-center button{
+	display:inline-block;
+}

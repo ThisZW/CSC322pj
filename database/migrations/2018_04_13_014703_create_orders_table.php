@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('payment_method');
             $table->integer('delivery_time')->nullable();
             $table->float('subtotal', 8, 2);
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 

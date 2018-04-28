@@ -17,7 +17,7 @@ class CreateAddressesTable extends Migration
             $table->increments('id');
             $table->integer('x_grid');
             $table->integer('y_grid');
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 
