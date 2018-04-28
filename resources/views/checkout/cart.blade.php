@@ -1,13 +1,12 @@
  @include('layouts.header')
 <div class="shopping-cart">
    <div class="cart">
-    <h1>Shopping Cart </h1>
-	
-	<table class="cart-main-table">
+    <h1>Shopping Cart </h1>	
+    <table class="cart-main-table" align="center" width="700">
 	   <thead>
 	      <tr class="first last">
-		       <th rowspan = "1"></th>
-			   <th rowspan = "1"></th>
+		       <th></th>
+			   <th></th>
 		       <th>Proudct Name</th>
                <th>Unit Price</th>
                <th>Qty</th>
@@ -32,16 +31,16 @@
 				</td>
 				<td>
 				   <span class = "cart-price">
-				       <span class = "price">$5.75</span>
+				       <div class = "price-item" align="center">$5.75</div>
 				   </span>
 				</td>
 				<td>
-				   <div class="qty-holder">
+				   <div class="qty-holder" align="center">
                    <input type="number" name="name" value="1">
 					</div>
 				</td>
 				<td>
-				   <div class="total-price">$5.75</div>
+				   <div class="total-price" align="center">$5.75</div>
 				</td>
 			 </tr>
 		</tbody>
@@ -49,9 +48,9 @@
 		<tfoot>
 		     <tr class = "first last">
 			   <td class = "a-right last" colspan="50">
-			    <button class = "Continue Shopping">Continue Shopping</button>
-				<button class = "Clear cart">Clear Cart</button>
-				<button class = "Update Cart">Update Cart</button>
+			    <button class = "button continue">Continue Shopping</button>
+				<button class = "button clear" style="float: right;">Clear Cart</button>
+				<button class = "button update" style="float: right;">Update Cart</button>
 			   </td>
 			 </tr>
 		</tfoot>
@@ -62,7 +61,7 @@
 	<div class="summary">
 	     <h2>Summary</h2>
 		 <div>
-		   <table class="summary-table">
+		   <table class="summary-table" style="text-align: left;" >
 		       <colgroup>
 			       <col />
 				   <col width = "1" />
@@ -70,18 +69,16 @@
 			   
 			   <tfoot>
 			       <tr>
-				      <td class="a-right" colspan="1">
-					     <strong> Ground Total Excl. Tax </strong>
-					  </td>
+				      <td style="text-align: left; padding: 10px 14px;">Ground_Total_Excl.Tax</td>
 					  <td class="a-right">
-					     <strong> <span class = "price">$5.75</span></strong>
+					     <strong> <span class = "price" style="padding: 10px 50px">$5.75</span></strong>
 					  </td>
 					 <tr>
-					  <td class="a-right" colspan="1">
-					     <strong> Final Price </strong>
+					  <td style="text-align: left; padding: 10px 14px;">
+					     Final Price 
 					  </td>
-					  <td class="a-right">
-					     <strong> <span class = "price">$5.75</span></strong>
+					  <td style="text-align: center;"">
+					     <strong> <span class = "price" style="padding: 10px 50px">$5.75</span></strong>
 					  </td>
 					 <tr>
 				   </tr>
@@ -89,15 +86,16 @@
 			   
 			   <tbody>
 			   <tr>
-			         <td class="a-right" colspan="1">Subtotal</td>
-					 <td class="a-right">
-					     <span class = "price">$5.75</span>
+			         <td style="text-align: left; padding: 10px 14px;">Subtotal</td>
+					 <td>
+					    <strong> <span class = "price" style="padding: 10px 30px">$5.75</span></strong>
 					  </td>
 			   </tr>
 			   </tbody>
 		   </table>
 		   <ul class = "Check out">
-		         <button class = "Checkout">Process to CheckOut</button>
+		   	<p></p>
+		         <button class = "button checkout">Process to Check Out >></button>
 		   </ul>
 		 </div>
 	</div>
