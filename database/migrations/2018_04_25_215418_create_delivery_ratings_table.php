@@ -18,7 +18,7 @@ class CreateDeliveryRatingsTable extends Migration
             $table->integer('delivery_id');
             $table->float('score',2);
             $table->integer('rater_id');
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 

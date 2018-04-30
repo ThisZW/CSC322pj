@@ -7,10 +7,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script
-              src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-              integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-              crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -39,7 +36,7 @@
     <link rel="stylesheet" href="{{ asset("css/superstylesheet.css") }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset("css/mobile.css") }}" />
     <script src="{{ asset("js/mobile.js") }}" type="text/javascript"></script>
-
+    @yield('header-extra')
 </head>
 
 
