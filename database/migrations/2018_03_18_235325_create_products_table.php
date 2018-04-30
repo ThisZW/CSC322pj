@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->float('price_t3',8,2);
             $table->integer('option_id');
             $table->boolean('status');
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 

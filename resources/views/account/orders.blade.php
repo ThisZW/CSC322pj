@@ -3,16 +3,13 @@
 
 @section('content')
 
-
-      
-
-
 	<div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-12"><div class="card">
 			<div class="card-header">
 				My Account page
 			</div> 
+            
 			<div class="card-body">
                     <div class="account-container col-md-12">
                         <div class="row">
@@ -26,13 +23,17 @@
                                 </ul>
                             </div>
                             <div class="col-md-8">
-                                <h2>Your Order</h2>
-                                
-                                <p class ="solid">Order ID:<br>Store Name:<br> Delivery Person:<br>Status:<br>Time</p>
-                                <button type="button" onclick="alert('Hello world!')">Order Detail</button>
-
-                                
-                                
+                                <h2>Your Orders</h2>  
+                                @foreach($data->orders as $order)
+                                <div class="order-block row">          
+                                        <div class="col-6">Order ID: {{$order->id}}
+                                            <br>Store Name: ???
+                                            <br> Delivery Person: ???
+                                            <br>Status: Completed
+                                            <br>Time ??? </div>
+                                    <div class="col-4"><button type="button" class="btn btn-sm order-detail-button" onclick="">Order Detail</button></div>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>                    

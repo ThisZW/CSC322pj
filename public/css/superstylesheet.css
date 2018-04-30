@@ -195,7 +195,13 @@ input[type=submit]:hover {
 }
 
 /**************************/
-p.solid{border-style:solid;}
+.order-block{
+  border:solid black 1px;
+  border-radius:5px;
+}
+.order-detail-button{
+  margin-top:30px;
+}
 
 
 /*************Order Detail*************************************/

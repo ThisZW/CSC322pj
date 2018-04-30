@@ -10,7 +10,10 @@ class Address extends Model
     	return $this->belongsTo('User');
     }
 
-    public function store(){
-    	return $this->belongsTo('iEats\Model\Catalog\Store');
+    public function stores(){
+    	return $this->hasOne('iEats\Model\Catalog\Store');
     }
+    //public function store(){
+    //	return $this->belongsTo('iEats\Model\Catalog\Store');
+    //}
 }
