@@ -39,7 +39,6 @@
     Panel.init();
     Controller.init();
 
-
     $.extend(Controller,{
       //overwrite
       mousedown: function (event) {
@@ -55,6 +54,7 @@
     		  this.setEndPos(gridX, gridY);
           findNearestStores(gridX,gridY);
     		}
+
       },
     });
     //Controller.setStartPosWithoutDeletePrev(10,10);
@@ -107,6 +107,7 @@
         <div class="btn-center">
        <button name="confirm" id="confirm_address" class="btn btn-md" onclick="clearStores()">test</button>
     </div>
+
     <div id="play_panel" class="panel right_panel" style="display:none">
 
       <button id="button1" class="control_button">Start Search</button>

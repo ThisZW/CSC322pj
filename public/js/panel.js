@@ -7,7 +7,7 @@ var Panel = {
 
         //$('.panel').draggable();
         //$('.accordion').accordion({
-        //    collapsible: false,
+          //  collapsible: false,
         //});
         $('.option_label').click(function() {
             $(this).prev().click();

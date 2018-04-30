@@ -526,7 +526,6 @@ $.extend(Controller, {
         //View.setBusyPos(11, 3);
         //write a function/cond to restrict user choose points that are not default node.
         this.setStartPos(6, 2);
-
     },
     
     setDefaultBlocks: function (){
