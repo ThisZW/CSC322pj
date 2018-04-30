@@ -42,6 +42,11 @@ var View = {
             fill: '#ff9933',
             'stroke-opacity': 0.2,
         },
+        //Zw: added selected store to blue
+        selected: {
+            fill: 'blue',
+            'stroke-opacity': 0.2,
+        },
     },
     nodeColorizeEffect: {
         duration: 50,
@@ -146,6 +151,27 @@ var View = {
             .animate(this.nodeStyle.start, 1000).toFront();
     },
 
+    flushCurrentGreenNodes: function(gridX, gridY) {
+        var coord = this.toPageCoordinate(gridX, gridY);
+        var storeNode = this.paper.rect(
+            coord[0],
+            coord[1],
+            this.nodeSize,
+            this.nodeSize
+        ).attr(this.nodeStyle.normal)
+            .animate(this.nodeStyle.blocked, 1000).toFront();
+    },
+
+    setSelectedNode: function(gridX, gridY) {
+        var coord = this.toPageCoordinate(gridX, gridY);
+        var storeNode = this.paper.rect(
+            coord[0],
+            coord[1],
+            this.nodeSize,
+            this.nodeSize
+        ).attr(this.nodeStyle.normal)
+            .animate(this.nodeStyle.selected, 1000).toFront();
+    },
     //Gor: implemented busy position
     setBusyPos: function (gridX, gridY) {
         var coord = this.toPageCoordinate(gridX, gridY);
@@ -157,8 +183,6 @@ var View = {
         ).attr(this.nodeStyle.normal)
             .animate(this.nodeStyle.busy, 1000).toFront();
     },
-
-
 
     setEndPos: function(gridX, gridY) {
         var coord = this.toPageCoordinate(gridX, gridY);
@@ -191,7 +215,7 @@ var View = {
         case 'closed':
             this.colorizeNode(this.rects[gridY][gridX], nodeStyle.closed.fill);
             this.setCoordDirty(gridX, gridY, true);
-        break;
+            break;
 
          //Gor: added case for busy road
         case 'busy':

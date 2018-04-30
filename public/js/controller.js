@@ -541,6 +541,13 @@ $.extend(Controller, {
         View.setStartPosWithoutDeletePrev(gridX, gridY);
     },
 
+    flushCurrentGreenNodes: function(store) {
+        View.flushCurrentGreenNodes(store.x_grid, store.y_grid);
+    },
+
+    setSelectedNode: function (gridX, gridY) {
+        View.setSelectedNode(gridX, gridY);
+    },
     setStartPos: function(gridX, gridY) {
         this.startX = gridX;
         this.startY = gridY;

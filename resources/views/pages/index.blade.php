@@ -24,7 +24,9 @@
 	<script type="text/javascript">
         //by Zw, this can be the field that takes parameter from backend(address/axis)
     var stores = {!! json_encode($data) !!};
-
+    var tempStores = [];
+    var check = false;
+    var storeSelection = [];
    $(document).ready(function() {
     if (!Raphael.svg) {
         window.location = './notsupported.html';
@@ -50,7 +52,20 @@
     		  gridY = coord[1],
     		  grid  = this.grid;
 
-    		if (this.can('eraseWall') && !grid.isWalkableAt(gridX, gridY)) {
+          console.log(tempStores);
+
+        for ( i in tempStores){
+          if (tempStores[i].x_grid == gridX && tempStores[i].y_grid == gridY)
+            check = true;
+        }
+
+        if(check){
+          this.setSelectedNode(gridX,gridY);
+          storeSelection = [];
+          storeSelection.push(gridX, gridY);
+          check = false;
+        }
+    		else if (this.can('eraseWall') && !grid.isWalkableAt(gridX, gridY)) {
     		  this.setEndPos(gridX, gridY);
           findNearestStores(gridX,gridY);
     		}
@@ -60,8 +75,16 @@
     //Controller.setStartPosWithoutDeletePrev(10,10);
 });
 
+
    //拉出所有store, 算路程，sort， 输出三个store , 输出的同时清除之前出现位置的其他store
     function findNearestStores(x , y){
+        for (var i in stores){
+          if (i==3)
+            break;
+          else
+            Controller.flushCurrentGreenNodes(stores[i]);
+            tempStores = []; //this will clear current nearest stores before getting new ones.
+        }
         for(var i in stores){
           stores[i].distance = Math.sqrt( Math.pow((stores[i].x_grid - x), 2) + Math.pow((stores[i].y_grid - y),2));
         }
@@ -70,11 +93,10 @@
             return x; 
         });
         for(var i in stores){
-          if (i == 0)
-            Controller.setStartPos(stores[i].x_grid, stores[i].y_grid);
-          else if (i==3)
+          if (i==3)
             break;
           else
+            tempStores.push({x_grid : stores[i].x_grid, y_grid : stores[i].y_grid });
             Controller.setStartPosWithoutDeletePrev(stores[i].x_grid, stores[i].y_grid);
         }
     }
