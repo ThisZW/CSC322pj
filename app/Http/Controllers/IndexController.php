@@ -18,5 +18,9 @@ class IndexController extends Controller
         return view('pages.index')->with('data', $stores);
     }
 
+    public function ajaxStoreFront(){
+    	$msg = "This is a simple message.";
+    	return response()->json(array('msg'=> $msg), 200);
+    }
 
 }

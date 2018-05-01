@@ -101,9 +101,20 @@
         }
     }
   
-    function clearStores(){
-
-    }
+      function confirmAction(){
+        $.ajax({
+            type: "POST",
+            url: "/select-store",
+            data:{
+              Coord: storeSelection,
+              _token : '<?php echo csrf_token() ?>",
+            },
+            success:function(data){
+              console.log(data.msg);
+              $("#msg").html(data.msg);
+            },
+        });
+      }
 </script>
 
 
@@ -123,6 +134,7 @@
       </div><!-- .accordion -->
     </div><!-- #algorithm_panel -->
 
+    <!-- by ZW: confirmAction button should send xgrid and ygrid from var storeSelection and send it back to the backend-->
     <div class="btn-center">
     	 <button name="confirm" id="confirm_address" class="btn btn-md" onclick="confirmAction()">Confirm your address</button>
     </div>
