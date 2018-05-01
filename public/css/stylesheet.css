@@ -303,3 +303,7 @@ font-size: 15px
 .btn-center button{
 	display:inline-block;
 }
+
+.main-page .panel{
+	display:none;
+}

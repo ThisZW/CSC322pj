@@ -5,9 +5,9 @@ var Panel = {
     init: function() {
         var $algo = $('#algorithm_panel');
 
-        //$('.panel').draggable();
-        //$('.accordion').accordion({
-          //  collapsible: false,
+        $('.panel').hide();
+        $('.accordion').hide();//accordion({
+         //   collapsible: false,
         //});
         $('.option_label').click(function() {
             $(this).prev().click();
@@ -108,8 +108,8 @@ var Panel = {
             break;
 
         case 'dijkstra_header':
-            allowDiagonal = typeof $('#dijkstra_section ' +
-                                     '.allow_diagonal:checked').val() !== 'undefined';
+            allowDiagonal = false;//typeof $('#dijkstra_section ' +
+                                     //'.allow_diagonal:checked').val() !== 'undefined';
             biDirectional = typeof $('#dijkstra_section ' +
                                      '.bi-directional:checked').val() !=='undefined';
             dontCrossCorners = typeof $('#dijkstra_section ' +
@@ -138,6 +138,7 @@ var Panel = {
               diagonalMovement: PF.DiagonalMovement.IfAtMostOneObstacle
             });
             break;
+
         case 'orth_jump_point_header':
             trackRecursion = typeof $('#orth_jump_point_section ' +
                                      '.track_recursion:checked').val() !== 'undefined';
@@ -149,9 +150,10 @@ var Panel = {
               diagonalMovement: PF.DiagonalMovement.Never
             });
             break;
+
         case 'ida_header':
-            allowDiagonal = typeof $('#ida_section ' +
-                                     '.allow_diagonal:checked').val() !== 'undefined';
+            allowDiagonal = false;//typeof $('#ida_section ' +
+                                     //'.allow_diagonal:checked').val() !== 'undefined';
             dontCrossCorners = typeof $('#ida_section ' +
                                      '.dont_cross_corners:checked').val() !=='undefined';
             trackRecursion = typeof $('#ida_section ' +
