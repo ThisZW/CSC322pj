@@ -18,6 +18,7 @@ Route::get('/LavarelDefaultPage', function () {
 Route::get('/', 'IndexController@index');
 
 Route::post('/select-store', 'IndexController@ajaxStoreFront');
+Route::get('/select-store', 'IndexController@ajaxStoreFront');
 
 Auth::routes();
 

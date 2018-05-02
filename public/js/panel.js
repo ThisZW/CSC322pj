@@ -5,10 +5,10 @@ var Panel = {
     init: function() {
         var $algo = $('#algorithm_panel');
 
-        $('.panel').hide();
-        $('.accordion').hide();//accordion({
-         //   collapsible: false,
-        //});
+        $('.panel').draggable();
+        $('.accordion').accordion({
+            collapsible: false,
+        });
         $('.option_label').click(function() {
             $(this).prev().click();
         });
