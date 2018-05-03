@@ -106,26 +106,10 @@
                 <a href="index.html" class="logo"><img src="/static/images/logo.png" alt=""></a>
                 <ul id="navigation">
                     <li class="selected">
-                        <a href="/">Home</a>
+                        <a href="/">Reselect Store</a>
                     </li>
                     <li class="menu">
-                        <a href="/stores">Stores</a>
-                    </li>
-                    <li class="menu">
-                        <a href="about.html">About</a>
-                        <ul class="primary">
-                            <li>
-                                <a href="product.html">Product</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu">
-                        <a href="blog.html">Blog</a>
-                        <ul class="secondary">
-                            <li>
-                                <a href="singlepost.html">Single post</a>
-                            </li>
-                        </ul>
+                        <a href="/stores">Listings</a>
                     </li>
                     <li>
                         <a href="/cart">Cart</a>

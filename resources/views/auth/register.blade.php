@@ -81,6 +81,8 @@
                                 <select id="role-selection" type="role" class="form-control" name="role">
                                     <option value="customer">Customer </option>
                                     <option value="delivery">Delivery Person</option>
+                                    <option value="manager">Manager</option>
+                                    <option value="cook">Cook</option>
                                 </select>
                             </div>
                         </div>

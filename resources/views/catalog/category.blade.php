@@ -1,14 +1,19 @@
 <!-- stores.blade.php -->
 
-@include('layouts.header')
+@extends('layouts.layout')
 
 <!-- {{ $data }} -->
-
+@section('front-content')
 			<div class="store-header">
 					<h1>Fullmoon Bubble Tea Store</h1>
 			</div>
 			<div class="menu-container main">
 			<div class="menu-container">
+	@guest
+	<div class="notification">You are currently a visitor in this website, <a href="{{ route('login') }}">login</a> / <a href="{{ route('login') }}">register</a> if you want to receive a better price!</div>
+	@else
+	<div class="notification">You are currently a member of this website, your price will be based your rating, go to your account page for details.</div>
+	@endguest
 				@foreach ($data as $cat)
 					<ul>
 						<li class="menu-category">
@@ -22,7 +27,7 @@
 								<a href="{{Request::url() . '/' . $cat->id . '/product/' . $p->id }}"><div class="menu-product-div">
 									<img class="menu-product-image" src="{{ asset('images/product-images/'. $p->image)}}"/>
 									<h2> {{ $p->name }} </h2>
-									<div class="menu-price"> ${{$p->price_t1}}</div>
+									<div class="menu-price"> as low as ${{$p->price_t3}}</div>
 								</div></a>
 							</li>
 						@endforeach
@@ -31,4 +36,4 @@
 					
 			</div>
 
-@include('layouts.footer')
+@endsection

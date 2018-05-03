@@ -1,8 +1,18 @@
- @include('layouts.header')
+ @extends('layouts.layout')
  
+ @section('front-content')
 <div class="product-container main">
-
-	<div class="breadcrumbs">This is the place for breadcrumbs!</div>
+	@guest
+	<div class="notification">You are currently a visitor in this website, <a href="{{ route('login') }}">login</a> / <a href="{{ route('login') }}">register</a> if you want to receive a better price!</div>
+	 @php
+		 $price_for_user = $data->price_t1;
+	 @endphp
+	@else
+	<div class="notification">You are currently a member of this website, your price will be based your rating, go to your account page for details.</div>
+	 @php
+		 $price_for_user = $data->price_t2;
+	 @endphp
+	@endguest
 
 	<div class="product-image">
 	<img src="{{asset('images/product-images/' . $data->image)}}" border ="10" style="border-style: inset" 
@@ -11,9 +21,6 @@
 
 	</div>
 
-	@php
-	$price_for_user = $data->price_t1; //This will be the price based on customer login
-	@endphp
 
 	<div class="product-side">
 		<form action="{{ route('addToCart')}}" method="POST" >
@@ -93,9 +100,7 @@
 	  
 	  </div>
 	
-
+{{$data}}
 </div>
 
-@include('layouts.footer')
-
-{{$data}}
+@endsection
