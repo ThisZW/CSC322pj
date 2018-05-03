@@ -307,3 +307,12 @@ font-size: 15px
 .main-page .panel{
 	display:none;
 }
+
+.store-display-area{
+	text-align:center;
+	display:none;
+}
+
+#view-listing{
+	display:none;
+}

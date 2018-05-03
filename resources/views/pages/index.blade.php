@@ -88,6 +88,12 @@
                     _token: "{{ csrf_token() }}"},
             success: function(data) {
                 console.log(data.data.products);
+                $('#store-display-area').show();
+                $('#confirm-address').hide();
+                $('#view-listing').show();
+                $('#view-listing').click(function(){
+                  window.location.href= '/stores/' + data.data.id +'/menu';
+                });
                 $('#store-display-area h3').text('You have Selected your store: ' + data.data.name);
                 for (var i = 0; i < 3; i++){
                   $('#product-'+ (parseInt(i)+1) +' a').attr('href',url + data.data.id +'/menu/'+ data.data.products[i].category_id +
@@ -215,14 +221,14 @@
     <div class="col-4 large-product" id="product-1">
       <a href=""><div class="menu-product-div">
         <img class="menu-product-image" src=""/>
-          <h4></h4>
+          <h4 class="center"></h4>
           <div class="menu-price"></div>
       </div></a>
     </div>
     <div class="col-3 small-product" id="product-3">
       <a href=""><div class="menu-product-div">
         <img class="menu-product-image" src=""/>
-          <h4></h4>
+          <h4 class="center"></h4>
           <div class="menu-price"></div>
       </div></a>
     </div>
