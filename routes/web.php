@@ -51,16 +51,16 @@ Route::post('/placeOrder', 'Checkout\CheckoutController@placeOrderAction')->name
 
 Route::get('/deliveryindextest', function(){
 	return view ('delivery.delivery');
-})
+});
 
 Route::get('/deliveryjobtest', function(){
 	return view ('delivery.job');
-})
+});
 
 Route::get('/managertest', function(){
 	return view ('manager.manager');
-})
+});
 
 Route::get('/cooktest', function(){
 	return view ('cook.cook');
-})
+});
