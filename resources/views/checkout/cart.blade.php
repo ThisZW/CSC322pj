@@ -16,7 +16,8 @@
 		
 		
 		<tbody>
-			
+			<form method="post" action="{{ route('updateCart') }}" accept-charset="UTF-8">
+
 				@foreach(session()->get('cart') as $p)
 				<tr>
 			        <td>
@@ -33,7 +34,7 @@
 					</td>
 					<td>
 					   <div class="qty-holder" align="center">
-	                   <input type="number" name="name" value="{{$p['quantity']}}">
+	                   <input type="number" name="quantity" value="{{$p['quantity']}}">
 						</div>
 					</td>
 					<td>
@@ -53,7 +54,7 @@
 			   </td>
 			 </tr>
 		</tfoot>
-	
+	</form>
 	
 	</table>
 	</div>

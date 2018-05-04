@@ -29,6 +29,7 @@ class IndexController extends Controller
                     ->where('y_grid', $coord[1])
                     ->first();
         $store = Store::with('products')->find($addr->id); //determined by rating & customer choices not done yet.
+        session()->put('store', $store->id);
         return $store;
     }
 }
