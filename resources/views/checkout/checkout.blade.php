@@ -6,13 +6,8 @@
   <div class="col-75">
     <div class="container">
       @if (session()->has('cart'))
-      <form method="POST" action="{{ route('placeOrder')}}">
+      <form method="POST" action="{{ route('placeOrder')}}" enctype="multipart/form-data">>
         @csrf
-        {{$register = 0}}
-        @if (Auth::guest())
-          @include('checkout.on-checkout-register')
-          {{$register = 1}}
-          @endif
         <div class="row">
           <div class="col-md-12">
             <h3><b>Billing Information</b></h3>
@@ -26,7 +21,15 @@
               <input type="text" id="phone_number" name="phone_number" placeholder="212-008-774">
             </div>
           </div>
-
+          @if (Auth::guest())
+          <div class="row">
+            <div class="col-md-6">
+              <label for="file"><i class="fa fa-file"></i>Self Identification Proofs.</label>
+              <input type="file" id="verification" name="verification" required="required">
+            </div>
+          </div>
+          <br>
+          @endif
             
           </div>
           

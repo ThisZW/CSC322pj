@@ -45,14 +45,11 @@ class CartController extends Controller
     * @param Illuminate\Http\Request $request, int $index
     * @return void
     */
-    public function updateProductQuantityInSession(Request $request){
-        $data = $request->input('quantity');
-        /*$cart = $request->session()->get('cart');
+    public function updateProductQuantityInSession(Request $request, $index){
+        $cart = $request->session()->get('cart');
         $cart[$index]['quantity'] += $request->quantity;
         $request->session()->forget('cart');
-        $request->session()->put('cart', $cart);*/
-        //$this->index();
-        return $data;
+        $request->session()->put('cart', $cart);
     }
 
 

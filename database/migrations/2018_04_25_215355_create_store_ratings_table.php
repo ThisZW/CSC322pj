@@ -18,7 +18,7 @@ class CreateStoreRatingsTable extends Migration
             $table->integer('store_id');
             $table->float('score',2);
             $table->integer('rater_id');
-            $table->timestamps()->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

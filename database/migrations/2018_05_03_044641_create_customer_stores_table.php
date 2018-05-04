@@ -17,7 +17,7 @@ class CreateCustomerStoresTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('store_id');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();;
         });
     }
 

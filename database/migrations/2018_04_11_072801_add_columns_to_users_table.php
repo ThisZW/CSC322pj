@@ -15,6 +15,7 @@ class AddColumnsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('username');
+            $table->string('stores');
             $table->enum('role', ['customer','delivery']);
             $table->integer('vip_level')->default(0);
         });

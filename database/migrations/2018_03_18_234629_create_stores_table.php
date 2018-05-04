@@ -20,7 +20,7 @@ class CreateStoresTable extends Migration
             $table->string('image');
             $table->integer('address_id');//->unsigned();
             //$table->foreign('address_id')->references('id')->on('address_book');
-            $table->timestamps()->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

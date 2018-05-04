@@ -26,10 +26,30 @@ class CheckoutController extends Controller
 	*/
 	public function setOrder(Request $request){
 		$subtotal = session()->get('subtotal');
-		$user_id = Auth::id();
+		$store_id = session()->get('store');
+		
 		$order = new Order;
-
+		if (Auth::guest()){
+			$user_id = 0;
+			$file = $request->file('verification');
+			//dd($file);
+			$request->verification->store('public/uploads');
+			$file_name = $request->file('verification')->hashName();
+			$order->file = $file_name;
+		}	
+		else {
+			$user_id = Auth::id();
+			$user = User::find(Auth::id());
+			$user_stores = explode(',', $user->stores);
+			if (!in_array( $store_id, $user_stores, false)){
+				array_push($user_stores, $store_id);
+				sort($user_stores);
+				$user->stores = implode( "," , $user_stores);
+				$user->save();
+			}
+		}
 		$order->user_id = $user_id;
+		$order->store_id = $store_id;
 		$order->payment_method = "Paypal";
 		$order->subtotal = $subtotal;
 		$order->order_name = $request->name;
@@ -54,21 +74,7 @@ class CheckoutController extends Controller
 	*@return void
 	*/
 	public function placeOrderAction(Request $request){
-		if (Auth::guest()){
-			$data = [
-				'username' => $request->username,
-				'role' => 'customer',
-				'email' => $request->email,
-				'password' => $request->password,
-				'name' => $request->name,
-			];
-			if ($this->validateRegistration($data) != false){
-				$user = $this->create($data);
-				Auth::login($user);
-			}
-		}
-
-		$this->setOrder();
+		$this->setOrder($request);
 		return view('checkout.success');
 	}
 

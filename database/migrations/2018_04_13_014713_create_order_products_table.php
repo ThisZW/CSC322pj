@@ -21,7 +21,7 @@ class CreateOrderProductsTable extends Migration
             $table->string('options');
             $table->float('price',8,2);
             $table->integer('quantity');
-            $table->timestamps()->useCurrent();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

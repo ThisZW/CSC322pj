@@ -35,7 +35,7 @@ Route::get('/cart', 'Checkout\CartController@index');
 Route::post('/cart', 'Checkout\CartController@buttonAddToCartAction')->name('addToCart');
 
 Route::post('/cart/update', 'Checkout\CartController@updateProductQuantityInSession')->name('updateCart');
-
+	
 Route::get('/myaccount', 'Account\AccountController@index' )->name('myAccount');
 
 Route::get('/myaccount/orders', 'Account\OrderController@index')->name('myOrders');

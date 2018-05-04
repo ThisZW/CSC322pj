@@ -17,24 +17,24 @@
 		
 		<tbody>
 			<form method="post" action="{{ route('updateCart') }}" accept-charset="UTF-8">
-
+				@csrf
 				@foreach(session()->get('cart') as $p)
 				<tr>
 			        <td>
-					    <button class = "center">Remove</button>
+					    <a href="" class="btn center">Remove</a>
 					</td>
 					<td>
 					<p>{{$p['name']}}</p>
 					<p>{{$p['option_string']}}</p>
 					</td>
 					<td>
-					   <span class = "cart-price">
-					       <div class = "price-item" align="center">${{$p['price']}}</div>
+					   <span class="cart-price">
+					       <div class="price-item" align="center">${{$p['price']}}</div>
 					   </span>
 					</td>
 					<td>
 					   <div class="qty-holder" align="center">
-	                   <input type="number" name="quantity" value="{{$p['quantity']}}">
+	                   <input type="number" name="quantity[]" value="{{$p['quantity']}}">
 						</div>
 					</td>
 					<td>
@@ -50,7 +50,7 @@
 			   <td class = "a-right last" colspan="50">
 			    <button class = "button continue">Continue Shopping</button>
 				<button class = "button clear" style="float: right;">Clear Cart</button>
-				<button class = "button update" style="float: right;">Update Cart</button>
+				<!-- <button class = "button update" style="float: right;">Update Cart</button> -->
 			   </td>
 			 </tr>
 		</tfoot>
@@ -95,7 +95,7 @@
 		   </table>
 		   <ul class = "Check out">
 		   	<p></p>
-		         <button class = "button checkout">Process to Check Out >></button>
+		         <button class="button checkout" onclick="window.location.href='/checkout'">Process to Check Out >></button>
 		   </ul>
 		 </div>
 	</div>

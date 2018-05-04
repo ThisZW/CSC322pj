@@ -30,7 +30,7 @@
                                 <h3>More Information</h3>
                                 <ul class="" style="list-style-type:disc">
                                 <li class="active"><a href="#">Account</a></li>
-                                <li><a href="#">Order</a></li>
+                                <li><a href="myaccount/orders">Order</a></li>
                                 <li><a href="#">Change Password</a></li>
                                 </ul>
                             </div>
