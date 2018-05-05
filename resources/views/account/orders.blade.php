@@ -31,7 +31,7 @@
                                             <br> Delivery Person: ???
                                             <br>Status: Completed
                                             <br>Time ??? </div>
-                                    <div class="col-4"><button type="button" class="btn btn-sm order-detail-button" onclick="">Order Detail</button></div>
+                                    <div class="col-4"><button type="button" class="btn btn-sm order-detail-button" onclick="window.open('/myaccount/orders/' + '{{$order->id}}')">Order Detail</button></div>
                                 </div>
                                 @endforeach
                             </div>
