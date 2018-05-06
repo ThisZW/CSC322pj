@@ -11,7 +11,6 @@ use iEats\Model\Order\OrderProduct;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use iEats\Model\Address\Address;
 class CheckoutController extends Controller
 {
    
@@ -22,8 +21,6 @@ class CheckoutController extends Controller
 
 	/**
 	*store order details into database from session of cart
-	*If guest, it will upload files, if not guest, the information of stores this user browsed will be updated.
-	*
 	*@param  Request $request
 	*@return void
 	*/
@@ -57,12 +54,6 @@ class CheckoutController extends Controller
 		$order->subtotal = $subtotal;
 		$order->order_name = $request->name;
 		$order->phone_number = $request->phone_number;
-
-		$address = new Address;
-		$address->x_grid = session()->get('customerAddress')[0];
-		$address->y_grid = session()->get('customerAddress')[1];
-		$address->save();
-		$order->address()->associate($address);
 		$order->save();
 
 		foreach(session()->get('cart') as $sp){
@@ -78,7 +69,7 @@ class CheckoutController extends Controller
 	}
 
 	/**
-	*set order 
+	*set order after registration/logged in customer
 	*@param none
 	*@return void
 	*/
