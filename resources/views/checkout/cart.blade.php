@@ -6,7 +6,8 @@
     <h1>Shopping Cart </h1>	
     <table class="cart-main-table" align="center" width="700">
 	   <thead>
-	      <tr class="first last">			   <th></th>
+	      <tr class="first last">			   
+	      	   <th></th>
 		       <th>Proudct Name</th>
                <th>Unit Price</th>
                <th>Qty</th>
