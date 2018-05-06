@@ -11,6 +11,9 @@ class OrderController extends Controller
 {
 
     public function index(){
+    	if (Auth::guest()){
+    		return "you are not logged in";
+    	}
     	$data = $this->getOrders();
     	return view('account/orders')->with('data', $data);
     }

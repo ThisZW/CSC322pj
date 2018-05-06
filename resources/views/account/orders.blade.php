@@ -14,7 +14,6 @@
                     <div class="account-container col-md-12">
                         <div class="row">
                             <div class="col-md-4">
-                                
                                 <h3>More Information</h3>
                                 <ul class="" style="list-style-type:disc">
                                 <li class="active"><a href="#">Account</a></li>
@@ -31,14 +30,12 @@
                                             <br> Delivery Person: ???
                                             <br>Status: Completed
                                             <br>Time ??? </div>
-                                    <div class="col-4"><button type="button" class="btn btn-sm order-detail-button" onclick="">Order Detail</button></div>
+                                    <div class="col-4"><button type="button" class="btn btn-sm order-detail-button" onclick="window.open('/myaccount/orders/'+ {{$order->id}})")>Order Detail</button></div>
                                 </div>
                                 @endforeach
                             </div>
                         </div>
                     </div>                    
-                    
-                    
                 </div>
             </div>
         </div>

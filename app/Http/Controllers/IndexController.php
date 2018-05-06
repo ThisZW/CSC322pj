@@ -32,4 +32,5 @@ class IndexController extends Controller
         session()->put('store', $store->id);
         return $store;
     }
+
 }

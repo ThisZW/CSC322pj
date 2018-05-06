@@ -16,4 +16,10 @@ class Product extends Model
     {
     	return $this->hasMany('iEats\Model\Catalog\ProductOption');
     }
+
+    public function ratings()
+    {
+    	return $this->hasMany('iEats\Model\Rating\ProductRating');
+    }
+
 }

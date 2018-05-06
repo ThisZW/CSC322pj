@@ -16,7 +16,7 @@ class CreateDeliveryRatingsTable extends Migration
         Schema::create('delivery_ratings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('delivery_id');
-            $table->float('score',2);
+            $table->int('score',2);
             $table->integer('rater_id');
             $table->timestamp('created_at')->useCurrent();
         });

@@ -1,7 +1,6 @@
 <?php
 
 namespace iEats\Http\Controllers\Checkout;
-
 use Illuminate\Http\Request;
 use iEats\Http\Controllers\Controller;
 use Auth;
@@ -11,6 +10,8 @@ use iEats\Model\Order\OrderProduct;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use iEats\Model\Address\Address;
+
 class CheckoutController extends Controller
 {
    
@@ -18,15 +19,17 @@ class CheckoutController extends Controller
 		//no index yet, everything is inside the session.
 	}
 
-
+	
 	/**
 	*store order details into database from session of cart
+	*If guest, it will upload files, if not guest, the information of stores this user browsed will be updated.
+	*
 	*@param  Request $request
 	*@return void
 	*/
 	public function setOrder(Request $request){
 		$subtotal = session()->get('subtotal');
-		$store_id = session()->get('store');
+		$store_id = session()->get('store');ss
 		
 		$order = new Order;
 		if (Auth::guest()){
@@ -54,6 +57,12 @@ class CheckoutController extends Controller
 		$order->subtotal = $subtotal;
 		$order->order_name = $request->name;
 		$order->phone_number = $request->phone_number;
+
+		$address = new Address;
+		$address->x_grid = session()->get('customerAddress')[0];
+		$address->y_grid = session()->get('customerAddress')[1];
+		$address->save();
+		$order->address()->associate($address);
 		$order->save();
 
 		foreach(session()->get('cart') as $sp){
@@ -68,8 +77,9 @@ class CheckoutController extends Controller
 		}
 	}
 
+
 	/**
-	*set order after registration/logged in customer
+	*set order 
 	*@param none
 	*@return void
 	*/
@@ -78,25 +88,5 @@ class CheckoutController extends Controller
 		return view('checkout.success');
 	}
 
-	public function validateRegistration($data){
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'role' => 'required|string',
-        ]);
-    }
-
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'role' => $data['role'],
-            'username' =>$data['username'],
-        ]);
-    }
 
 }

@@ -67,6 +67,7 @@
  <div class="main-page container">
 	<script type="text/javascript">
         //by Zw, this can be the field that takes parameter from backend(address/axis)
+
     var stores = {!! json_encode($data) !!};
     var tempStores = [];
     var check = false;

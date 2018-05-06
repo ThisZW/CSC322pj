@@ -10,11 +10,6 @@ use Auth;
 class AccountController extends Controller
 {
 
-    public function getOrderDetailsView($orderId){
-    	return view('account.order_details');
-    }
-
-
     public function calculateAverageRating(){
     	return 5; //not done yet
     }
