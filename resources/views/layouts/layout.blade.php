@@ -31,6 +31,7 @@
     <!-- above are copied from app.blade.php -->
     <!-- for star rating -->
     <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    
 
 
     <meta charset="UTF-8">

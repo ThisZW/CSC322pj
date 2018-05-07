@@ -60,7 +60,7 @@ Route::get('/deliveryindextest', function(){
 });
 
 Route::get('/deliveryjobtest', function(){
-	return view ('delivery.job');
+	return view ('delivery.jobs');
 });
 
 Route::get('/managertest', function(){

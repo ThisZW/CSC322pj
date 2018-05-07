@@ -61,7 +61,36 @@ This should also have a list of orders that delivery people received from the st
                                     		</tr>
                                     		<tr>
                                     			<th>Please give rating</th>
-                                    			<th></th>
+                                    			<th>
+
+                                                    <form id="ratingForm">
+                                                        <fieldset class="rating"">
+                                                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5">5 star</label>
+                                                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4">4 star</label>
+                                                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3">3 star</label>
+                                                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2">2 star</label>
+                                                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1">1 star</label>
+                                                        </fieldset>
+                                                        <button class="submit rate">Submit</button>
+                                                    </form>
+
+                                                    <script language = "javascript">
+                                                        $(document).ready(function() {
+                                                            $("form#ratingForm").submit(function(e)
+                                                            {
+                                                                e.preventDefault();
+                                                                if ($("#ratingForm :radio:checked").length == 0) {
+                                                                    $('#status').html("nothing checked");
+                                                                    return false;
+                                                                } else {
+                                                                    $('#status').html( $('input:radio[name=rating]:checked').val() + 'stars');
+                                                                }
+                                                            });
+                                                        });
+                                                    </script>
+
+
+                                                </th>
                                     		</tr>
                                    
                                         </table>
