@@ -10,7 +10,7 @@ window.Popper = require('popper.js').default;
 
 try {
     window.$ = window.jQuery = require('jquery');
-
+	window.$ = $.extend(require('jquery-ui-bundle'));
     require('bootstrap');
 } catch (e) {}
 

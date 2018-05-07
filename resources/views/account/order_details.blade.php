@@ -2,8 +2,13 @@
 
 
 @section('content')
-
-
+    <script>
+        $(document).ready(function(){
+            $('#rate-product').click(function(){
+                $("#dialog").dialog();
+            });
+        });
+    </script>
 	<div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-12"><div class="card">
@@ -13,21 +18,17 @@
 			<div class="card-body">
                     
                     <div class = "order-id">
-                    	<p>Order ID :</p>
+                    	<p>Order ID : {{$data->id}}</p>
                     	<div></div>
                     </div>
 
                     <div class = "order-store">
-                    	<p> Ordered Store Name:</p>
+                    	<p> Ordered Store Name: {{$data->store->name}}</p>
                     	
                     	<x-star-rating>
-                    		<p> It has current rate of: </p>
+                    		<p> It has current rate of: {{$data->store->rating}}</p>
 
                     		<div class="star full"></div>
-                    		<div class="star full"></div>
-                    		<div class="star full"></div>
-                    		<div class="star"></div>
-                    		<div class="star"></div>
                     		
                     	</x-star-rating>
                     </div>
@@ -66,31 +67,32 @@
                         	<table class="table1" align="center">
                         		<tr>
                         			<th>Product Name</th>
-                        			<th>Price</th>
+                        			<th>Options</th>
                         			<th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Average Rating</th>
                         			<th>Subtotal</th>
+                                    <th>Your Rating</th>
                         		</tr>
-
-                        		<tr>
-                        			<td>Green Bubble Milk Tea</td>
-                        			<td>5.50</td>
-                        			<td>2</td>
-                        			<td>11</td>
-                        		</tr>
-
-                        		<tr>
-                        			<td>Green Bubble Milk Tea</td>
-                        			<td>5.50</td>
-                        			<td>2</td>
-                        			<td>11</td>
-                        		</tr>
-
+                                @foreach($data->orderProducts as $op)
+                            		<tr>
+                            			<td>{{$op->name}}</td>
+                            			<td>{{$op->options}}</td>
+                            			<td>{{$op->quantity}}</td>
+                                        <td>{{$op->price}}</td>
+                                        <td>{{$op->rating}}
+                                            </td>
+                            			<td>{{$op->quantity * $op->price}}</td>
+                                        <td><button id="rate-product" class="btn btn-sm">Rate Now</button></td>
+                                        <div id="dialog" title="Dialog Title">I'm in a dialog</div>
+                            		</tr>
+                                @endforeach
                         	</table>
                         </div>
-
+                        <br><br>
                     </div>
 
-                    <div class = "order-summary">
+                    <div class="order-summary">
 
                     	<table class="table2" align="right">
                     		<tr>
@@ -121,4 +123,6 @@
         </div>
     </div>
 </div>
+
+{{$data}}
 @endsection

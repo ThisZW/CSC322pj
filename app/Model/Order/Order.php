@@ -10,10 +10,6 @@ class Order extends Model
     	return $this->hasMany('iEats\Model\Order\OrderProduct');
     }
 
-    public function address(){
-    	return $this->belongsTo('iEats\Model\Address\Address');
-    }
-    
     protected $fillable = [
         'user_id', 'payment_method', 'subtotal'
     ];

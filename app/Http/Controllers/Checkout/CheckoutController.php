@@ -1,7 +1,6 @@
 <?php
 
 namespace iEats\Http\Controllers\Checkout;
-
 use Illuminate\Http\Request;
 use iEats\Http\Controllers\Controller;
 use Auth;
@@ -12,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use iEats\Model\Address\Address;
+
 class CheckoutController extends Controller
 {
    
@@ -19,7 +19,7 @@ class CheckoutController extends Controller
 		//no index yet, everything is inside the session.
 	}
 
-
+	
 	/**
 	*store order details into database from session of cart
 	*If guest, it will upload files, if not guest, the information of stores this user browsed will be updated.
@@ -29,7 +29,7 @@ class CheckoutController extends Controller
 	*/
 	public function setOrder(Request $request){
 		$subtotal = session()->get('subtotal');
-		$store_id = session()->get('store');
+		$store_id = session()->get('store');ss
 		
 		$order = new Order;
 		if (Auth::guest()){
@@ -77,6 +77,7 @@ class CheckoutController extends Controller
 		}
 	}
 
+
 	/**
 	*set order 
 	*@param none
@@ -87,25 +88,5 @@ class CheckoutController extends Controller
 		return view('checkout.success');
 	}
 
-	public function validateRegistration($data){
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'role' => 'required|string',
-        ]);
-    }
-
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'role' => $data['role'],
-            'username' =>$data['username'],
-        ]);
-    }
 
 }

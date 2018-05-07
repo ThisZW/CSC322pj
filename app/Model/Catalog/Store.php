@@ -18,4 +18,13 @@ class Store extends Model
     public function products(){
     	return $this->hasManyThrough('iEats\Model\Catalog\Product', 'iEats\Model\Catalog\Category');
     }
+
+    public function orders(){
+    	return $this->hasMany('iEats\Model\Order\Order');
+    }
+
+    public function ratings(){
+        return $this->hasMany('iEats\Model\Rating\StoreRating');
+    }
+
 }

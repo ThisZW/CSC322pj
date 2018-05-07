@@ -24,23 +24,29 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
 Route::get('/stores', 'Catalog\StoreController@index');
 
 Route::get('/stores/{storeId}/menu','Catalog\CategoryController@index');
 
 Route::get('/stores/{storeId}/menu/{categoryId}/product/{productId}','Catalog\ProductController@index');
 
+
+
 Route::get('/cart', 'Checkout\CartController@index');
 
 Route::post('/cart', 'Checkout\CartController@buttonAddToCartAction')->name('addToCart');
 
 Route::post('/cart/update', 'Checkout\CartController@updateProductQuantityInSession')->name('updateCart');
+
+
 	
 Route::get('/myaccount', 'Account\AccountController@index' )->name('myAccount');
 
 Route::get('/myaccount/orders', 'Account\OrderController@index')->name('myOrders');
 
-Route::get('/myaccount/orders/{orderId}','Account\AccountController@getOrderDetailsView')->name('orderDetails');
+Route::get('/myaccount/orders/{orderId}','Account\OrderDetailController@index')->name('orderDetails');
 
 Route::get('/checkout', function(){
 	return view('checkout/checkout');

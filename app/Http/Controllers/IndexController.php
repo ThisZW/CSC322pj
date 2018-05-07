@@ -20,18 +20,17 @@ class IndexController extends Controller
     }
 
     public function ajaxStoreFront(Request $request){
-        $data = $this->getSelectedStore($request->coord, $request->customerAddr);
+        $data = $this->getSelectedStore($request->coord);
     	return response()->json(array('data'=> $data), 200);
     }
 
-    public function getSelectedStore($coord, $customerAddr){
+    public function getSelectedStore($coord){
         $addr = Address::where('x_grid', $coord[0])
                     ->where('y_grid', $coord[1])
                     ->first();
         $store = Store::with('products')->find($addr->id); //determined by rating & customer choices not done yet.
         session()->put('store', $store->id);
-        session()->put('customerAddress', $customerAddr);
         return $store;
     }
-    
+
 }
