@@ -18,7 +18,6 @@ Route::get('/LavarelDefaultPage', function () {
 Route::get('/', 'IndexController@index');
 
 Route::post('/select-store', 'IndexController@ajaxStoreFront');
-Route::get('/select-store', 'IndexController@ajaxStoreFront');
 
 Auth::routes();
 
@@ -48,6 +47,17 @@ Route::get('/myaccount/orders', 'Account\OrderController@index')->name('myOrders
 
 Route::get('/myaccount/orders/{orderId}','Account\OrderDetailController@index')->name('orderDetails');
 
+Route::post('/myaccount/ratestore', 'Account\OrderDetailController@ajaxRateStore')->name('rateStore');
+
+Route::post('/myaccount/ratedelivery', 'Account\OrderDetailController@ajaxRateDelivery')->name('rateDelivery');
+
+Route::post('/myaccount/rateproduct', 'Account\OrderDetailController@ajaxRateProduct')->name('rateProduct');
+
+
+
+
+
+
 Route::get('/checkout', function(){
 	return view('checkout/checkout');
 })->name('checkout');
@@ -57,7 +67,7 @@ Route::post('/placeOrder', 'Checkout\CheckoutController@placeOrderAction')->name
 
 Route::get('/deliveryindextest', function(){
 	return view ('delivery.delivery');
-});
+})->name('myJobs');
 
 Route::get('/deliveryjobtest', function(){
 	return view ('delivery.jobs');
@@ -65,8 +75,8 @@ Route::get('/deliveryjobtest', function(){
 
 Route::get('/managertest', function(){
 	return view ('manager.manager');
-});
+})->name('manager');
 
 Route::get('/cooktest', function(){
 	return view ('cook.cook');
-});
+})->name('myMenu');

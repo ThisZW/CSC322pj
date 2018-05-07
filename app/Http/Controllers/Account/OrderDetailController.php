@@ -7,6 +7,8 @@ use iEats\Http\Controllers\Controller;
 use iEats\Model\Order\Order;
 use iEats\Model\Catalog\Store;
 use iEats\Model\Catalog\Product;
+use iEats\Model\Rating\StoreRating;
+use Auth;
 
 class OrderDetailController extends Controller
 {
@@ -21,10 +23,10 @@ class OrderDetailController extends Controller
 
 
     public function getOrderDetails($orderId){
-    	$order = Order::with('orderProducts')->find($orderId);
+    	$order = Order::with('orderProducts','orderToDelivery')->find($orderId);
         foreach($order->orderProducts as $op){
             $p = Product::with('ratings')->find($op->product_id);
-            $op->rating = $p->ratings->avg('score');
+            $op->rating = round($p->ratings->avg('score'),2);
         }
     	return $order;
     }
@@ -33,8 +35,32 @@ class OrderDetailController extends Controller
     public function getStore($storeId){
     	$store = Store::with('ratings')->find($storeId);
     	//calculate avg ratings
-    	$store->rating = $store->ratings->avg('score');
+    	$store->rating = round($store->ratings->avg('score'),2);
     	return $store;
+    }
+
+    public function getAdditionInfo($orderId){
+ 
+    }
+
+    public function ajaxRateStore(Request $request){
+
+        $storeRating = new StoreRating;
+        $storeRating->store_id = $request->storeId;
+        $storeRating->comment = $request->comment;
+        $storeRating->score = $request->score;
+        $storeRating->rater_id = Auth::id();
+        $storeRating->save();
+
+        return response()->json(array('data'=> 'success'), 200);
+    }
+
+    public function ajaxRateDelivery(){
+
+    }
+
+    public function ajaxRateProduct(){
+
     }
 
 }

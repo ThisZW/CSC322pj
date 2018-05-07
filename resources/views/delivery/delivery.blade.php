@@ -12,7 +12,7 @@ This should also have a list of orders that delivery people received from the st
 @extends('layouts.app')
 
 @section('content')
-	<div class="Deliverycontainer">
+	<div class="delivery-container container">
    	 	<div class="row justify-content-center">
        		<div class="col-md-12">
         		<div class="card">
@@ -63,16 +63,16 @@ This should also have a list of orders that delivery people received from the st
                                     			<th>Please give rating</th>
                                     			<th>
 
-                                                    <form id="ratingForm">
-                                                        <fieldset class="rating"">
+                                                    <div class="rating-container">
+                                                        <fieldset class="rating">
                                                             <input type="radio" id="star5" name="rating" value="5" /><label for="star5">5 star</label>
                                                             <input type="radio" id="star4" name="rating" value="4" /><label for="star4">4 star</label>
                                                             <input type="radio" id="star3" name="rating" value="3" /><label for="star3">3 star</label>
                                                             <input type="radio" id="star2" name="rating" value="2" /><label for="star2">2 star</label>
                                                             <input type="radio" id="star1" name="rating" value="1" /><label for="star1">1 star</label>
                                                         </fieldset>
-                                                        <button class="submit rate">Submit</button>
-                                                    </form>
+                                                        <button class="submit-rate-btn btn btn-md">Submit</button>
+                                                    </div>
 
                                                     <script language = "javascript">
                                                         $(document).ready(function() {

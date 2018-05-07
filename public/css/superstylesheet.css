@@ -205,27 +205,13 @@ input[type=submit]:hover {
 
 
 /*************Order Detail*************************************/
-x-star-rating {
-  font-family: "Ionicons";
-  font-size: 15px;
-  display: inline-flex;
-}
-x-star-rating > .star:after {
-  content:"\f3ae";
-  color:#777;
-}
-x-star-rating > .star.full:after{
-  content:"\f2fc";
-  color:#fd0;
-}
-
 
 table.table1{
   border:2px solid black;
   text-align: center;
 }
 table.table1 td{
-  padding: 7px 30px;
+  padding: 3px 13px;
   border:2px solid black;
   text-align: center;
 }
@@ -233,7 +219,7 @@ table.table1 td{
 table.table1 th{
   border:2px solid black;
   text-align: center;
-  padding: 7px 30px;
+  padding: 3px 13px;
   background-color: lightgray;
 }
 
@@ -325,4 +311,12 @@ table.table2 th{
 
 #status, button {
     margin: 20px 0;
+}
+
+.submit-rate-btn{
+  margin:5px 10px;
+}
+
+#rating-store-comment-block{
+  display:none;
 }

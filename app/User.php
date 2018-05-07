@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     public function orders(){
-        return $this->hasMany('iEats\Model\Account\Order');
+        return $this->hasMany('iEats\Model\Order\Order');
     }
 
     public function customerStores(){

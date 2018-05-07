@@ -23,41 +23,92 @@
                     </div>
 
                     <div class = "order-store">
-                    	<p> Ordered Store Name: {{$data->store->name}}</p>
-                    	
-                    	<x-star-rating>
-                    		<p> It has current rate of: {{$data->store->rating}}</p>
-
-                    		<div class="star full"></div>
-                    		
-                    	</x-star-rating>
+                    	<p> Ordered Store Name: {{$data->store->name}}</p> 
+                        <p> It has current rate of: <b>{{$data->store->rating}}</b> Stars</p>
                     </div>
+                    <p> Rate this store: </p>
+                    @php 
+                        $yourRating = $data->store->ratings->where('rater_id', $data->user_id)->first();
+                    @endphp
+                    @if ($yourRating->count() != 0)
+                        <p> You have given this store the rating of {{$yourRating['score']}} stars </p>
+                        <p> Your Comment was: {{$yourRating['comment']}} </p>
+                    @else
+                        <div class="rating-container">
+                            <fieldset class="rating" id="rating-store">
+                                <input type="radio" id="star5" name="rating" value="5" /><label for="star5">5 star</label>
+                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4">4 star</label>
+                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3">3 star</label>
+                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2">2 star</label>
+                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1">1 star</label>
+                            </fieldset>
+                            <button id="submit-store-rate-btn" class=" btn btn-md">Submit</button><p class="store-rating-success-msg"></p>
+                            <br>
+                            <div id="rating-store-comment-block">
+                                <label for="rating-store-comment">If you rating is below 3 Please give a reason:</label><br>
+                                <textarea type="textarea" id="rating-store-comment" name="rating-store" value="default" placeholder="Comments here"></textarea>
+                            </div>
+                        </div>
+                    @endif
 
-                    <div class = "order-deliver">
-                    	<p> Delivery Person Name:</p>
-                    	
-                    	<x-star-rating>
-                    		<p> He/She has current rate of: </p>
+                    <br>
+                    <script>
+                        $(document).ready(function() {
+                            $("#rating-store").click(function(){
+                                if ($('input:radio[name=rating]:checked').val() == "2" || $('input:radio[name=rating]:checked').val() == "1") {
+                                    $('#rating-store-comment-block').slideDown();
+                                } else {
+                                    $('#rating-store-comment-block').slideUp();
+                                }
+                            });
+                            $("#submit-store-rate-btn").click(function(event){
+                                if ($("#rating-store :radio:checked").length == 0){
+                                    alert('Please choose rating before submit');
+                                }
+                                else {
+                                    $.ajax({
+                                        type: "POST",
+                                        url: '/myaccount/ratestore',
+                                        data: { storeId : "{{$data->store->id}}",
+                                                score : $('input:radio[name=rating]:checked').val(),
+                                                comment : $('#rating-store-comment').val(),
+                                                _token: "{{ csrf_token() }}"},
+                                        success: function(data) {
+                                            $('.store-rating-success-msg').text(data.data);
+                                            $('#submit-store-rate-btn').attr("disabled","disabled");
+                                        }
+                                });}
+                            });
+                        });
+//
+                    </script>
 
-                    		<div class="star full"></div>
-                    		<div class="star full"></div>
-                    		<div class="star full"></div>
-                    		<div class="star"></div>
-                    		<div class="star"></div>
-                    		
-                    	</x-star-rating>
-                    </div>
+                        @if ($data->orderToDelivery)
+                            <div class = "order-deliver">
+                            	<p> Delivery Person Name:</p>
+                            <br>
+                            <div class="order-status">
+                                <p> Status:</p>
+                            </div>
+                            <div class="rating-container">
+                                <fieldset class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5">5 star</label>
+                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4">4 star</label>
+                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3">3 star</label>
+                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2">2 star</label>
+                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1">1 star</label>
+                                </fieldset>
+                                <button class="submit-rate-btn btn btn-md">Submit</button>
+                            </div>
+                        @else
+                            <p> This has not been delivered yet, you will see the information of delivery person after the delivery starts.</p>
+                        @endif
+                   
 
-                    <div class = "order-status">
-                    	<p> Status:</p>
-                    </div>
 
-                    <div class = "order-at">
-                    	<p> Order at:</p>
-                    </div>
 
-                    <div class = "order-pay">
-                    	<p> Payment Type:</p>
+                    <div class="order-pay">
+                    	<p> Payment Type: Paypal</p>
                     </div>
 
                     
@@ -80,11 +131,10 @@
                             			<td>{{$op->options}}</td>
                             			<td>{{$op->quantity}}</td>
                                         <td>{{$op->price}}</td>
-                                        <td>{{$op->rating}}
+                                        <td>{{$op->rating}} Stars
                                             </td>
                             			<td>{{$op->quantity * $op->price}}</td>
                                         <td><button id="rate-product" class="btn btn-sm">Rate Now</button></td>
-                                        <div id="dialog" title="Dialog Title">I'm in a dialog</div>
                             		</tr>
                                 @endforeach
                         	</table>

@@ -13,4 +13,12 @@ class Order extends Model
     protected $fillable = [
         'user_id', 'payment_method', 'subtotal'
     ];
+
+    public function store(){
+    	return $this->belongsTo('iEats\Model\Catalog\Store');
+    }
+
+    public function orderToDelivery(){
+    	return $this->hasOne('iEats\Model\Order\OrderToDelivery');
+    }
 }

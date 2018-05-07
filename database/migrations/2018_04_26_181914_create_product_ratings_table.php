@@ -18,6 +18,7 @@ class CreateProductRatingsTable extends Migration
             $table->integer('product_id');
             $table->int('score',2);
             $table->integer('rater_id');
+            $table->longText('comment');
             $table->timestamp('created_at')->useCurrent();
         });
     }

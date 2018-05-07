@@ -16,6 +16,7 @@ class CreateOrderToDeliveriesTable extends Migration
         Schema::create('order_to_deliveries', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('store_id');
+            $table->integer('order_id');
             $table->integer('delivery_id');
             $table->string('status');
             $table->timestamp('created_at')->useCurrent();
