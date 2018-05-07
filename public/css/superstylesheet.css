@@ -320,3 +320,7 @@ table.table2 th{
 #rating-store-comment-block{
   display:none;
 }
+
+.rating-product-container{
+  display:none;
+}

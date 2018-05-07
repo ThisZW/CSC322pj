@@ -2,13 +2,6 @@
 
 
 @section('content')
-    <script>
-        $(document).ready(function(){
-            $('#rate-product').click(function(){
-                $("#dialog").dialog();
-            });
-        });
-    </script>
 	<div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-12"><div class="card">
@@ -30,7 +23,7 @@
                     @php 
                         $yourRating = $data->store->ratings->where('rater_id', $data->user_id)->first();
                     @endphp
-                    @if ($yourRating->count() != 0)
+                    @if ($yourRating)
                         <p> You have given this store the rating of {{$yourRating['score']}} stars </p>
                         <p> Your Comment was: {{$yourRating['comment']}} </p>
                     @else
@@ -134,8 +127,68 @@
                                         <td>{{$op->rating}} Stars
                                             </td>
                             			<td>{{$op->quantity * $op->price}}</td>
-                                        <td><button id="rate-product" class="btn btn-sm">Rate Now</button></td>
-                            		</tr>
+                                        @php
+                                            $yourProductRating = $op->ratings;
+                                        @endphp
+                                        @if (!$yourProductRating)
+                                        <td><button id="rate-product-btn-{{$op->id}}" class="btn btn-sm">Rate Now</button></td>
+                                		</tr>
+                                        <tr class="rating-product-container p-tr-{{$op->id}}">
+                                            <td colspan="2">
+                                                <fieldset class="rating" id="rating-product-{{$op->id}}">
+                                                    <input type="radio" id="star5" name="rating-{{$op->id}}" value="5" /><label for="star5">5 star</label>
+                                                    <input type="radio" id="star4" name="rating-{{$op->id}}" value="4" /><label for="star4">4 star</label>
+                                                    <input type="radio" id="star3" name="rating-{{$op->id}}" value="3" /><label for="star3">3 star</label>
+                                                    <input type="radio" id="star2" name="rating-{{$op->id}}" value="2" /><label for="star2">2 star</label>
+                                                    <input type="radio" id="star1" name="rating-{{$op->id}}" value="1" /><label for="star1">1 star</label>
+                                                </fieldset>
+                                            </td>
+                                            <td colspan="2">
+                                                <button id="submit-product-rate-btn-{{$op->id}}" class="btn btn-md">Submit</button><p class="product-rating-success-msg-{{$op->id}}"></p>
+                                            </td>
+                                            <td colspan="3">
+                                                <div id="rating-product-comment-block-{{$op->id}}">
+                                                    <label for="rating-product-comment">If you rating is below 3 Please give a reason:</label><br>
+                                                    <textarea type="textarea" id="rating-product-comment-{{$op->id}}" name="rating-product-{{$op->id}}" value="default" placeholder="Comments here"></textarea>
+                                                </div>          
+                                            </td>
+                                        </tr>
+                                        <script>
+                                            $(document).ready(function() {
+                                                $("#rate-product-btn-{{$op->id}}").click(function(){
+                                                    $(".p-tr-{{$op->id}}").slideDown();
+                                                });
+                                                $("#rating-product-{{$op->id}}").click(function(){
+                                                    if ($('input:radio[name=rating]:checked').val() == "2" || $('input:radio[name=rating]:checked').val() == "1") {
+                                                        $('#rating-product-comment-block-{{$op->id}}').slideDown();
+                                                    } else {
+                                                        $('#rating-product-comment-block-{{$op->id}}').slideUp();
+                                                    }
+                                                });
+                                                $("#submit-store-rate-btn").click(function(event){
+                                                    if ($("#rating-product-{{$op->id}} :radio:checked").length == 0){
+                                                        alert('Please choose rating before submit');
+                                                    }
+                                                    else {
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            url: '/myaccount/rateproduct',
+                                                            data: { orderProductId : "{{$op->id}}",
+                                                                    score : $('input:radio[name=rating-{{$op->id}}]:checked').val(),
+                                                                    productId : "{{$op->product_id}}",
+                                                                    comment : $('#rating-product-comment-{{$op->id}}').val(),
+                                                                    _token: "{{ csrf_token() }}"},
+                                                            success: function(data) {
+                                                                $('.product-rating-success-msg-{{$op->id}}').text(data.data);
+                                                                $('#submit-product-rate-btn-{{$op->id}}').attr("disabled","disabled");
+                                                            }
+                                                    });}
+                                                });
+                                            });
+                                        </script>       
+                                        @else
+                                        <td></td></tr>
+                                        @endif
                                 @endforeach
                         	</table>
                         </div>

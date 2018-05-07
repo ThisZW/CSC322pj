@@ -29,7 +29,7 @@ class CheckoutController extends Controller
 	*/
 	public function setOrder(Request $request){
 		$subtotal = session()->get('subtotal');
-		$store_id = session()->get('store');ss
+		$store_id = session()->get('store');
 		
 		$order = new Order;
 		if (Auth::guest()){

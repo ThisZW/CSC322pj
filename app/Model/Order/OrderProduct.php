@@ -10,4 +10,12 @@ class OrderProduct extends Model
         'order_id', 'product_id', 'name', 'options', 
         'price', 'quantity',
     ];
+
+    public function product(){
+    	return $this->belongsTo('iEats\Model\Catalog\Product');
+    }
+
+    public function ratings(){
+    	return $this->hasOne('iEats\Model\Rating\ProductRating');
+    }
 }

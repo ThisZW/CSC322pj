@@ -86,6 +86,7 @@
             type: "POST",
             url: '/select-store',
             data: {coord: storeSelection,
+                    customerAddr: customerAddressSelection,
                     _token: "{{ csrf_token() }}"},
             success: function(data) {
                 console.log(data.data.products);
@@ -133,6 +134,8 @@
           }
           else if (this.can('eraseWall') && !grid.isWalkableAt(gridX, gridY)) {
             this.setEndPos(gridX, gridY);
+            customerAddressSelection = []
+            customerAddressSelection.push(gridX, gridY);
             findNearestStores(gridX,gridY);
           }
         },

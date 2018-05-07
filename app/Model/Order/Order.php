@@ -18,6 +18,10 @@ class Order extends Model
     	return $this->belongsTo('iEats\Model\Catalog\Store');
     }
 
+    public function address(){
+        return $this->belongsTo('iEats\Model\Address\Address');
+    }
+    
     public function orderToDelivery(){
     	return $this->hasOne('iEats\Model\Order\OrderToDelivery');
     }
