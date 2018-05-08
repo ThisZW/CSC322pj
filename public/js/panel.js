@@ -138,7 +138,6 @@ var Panel = {
               diagonalMovement: PF.DiagonalMovement.IfAtMostOneObstacle
             });
             break;
-
         case 'orth_jump_point_header':
             trackRecursion = typeof $('#orth_jump_point_section ' +
                                      '.track_recursion:checked').val() !== 'undefined';
@@ -150,7 +149,6 @@ var Panel = {
               diagonalMovement: PF.DiagonalMovement.Never
             });
             break;
-
         case 'ida_header':
             allowDiagonal = false;//typeof $('#ida_section ' +
                                      //'.allow_diagonal:checked').val() !== 'undefined';

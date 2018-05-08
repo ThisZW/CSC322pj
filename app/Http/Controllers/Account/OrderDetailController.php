@@ -59,8 +59,8 @@ class OrderDetailController extends Controller
 
     }
 
-    public function ajaxRateProduct(){
-
+    public function ajaxRateProduct(Request $request){
+        $
     }
 
 }

@@ -318,3 +318,6 @@ font-size: 15px
 }
 
 
+.card .panel{
+	display:none;
+}

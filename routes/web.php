@@ -55,9 +55,6 @@ Route::post('/myaccount/rateproduct', 'Account\OrderDetailController@ajaxRatePro
 
 
 
-
-
-
 Route::get('/checkout', function(){
 	return view('checkout/checkout');
 })->name('checkout');
@@ -65,13 +62,10 @@ Route::get('/checkout', function(){
 Route::post('/placeOrder', 'Checkout\CheckoutController@placeOrderAction')->name('placeOrder');
 
 
-Route::get('/deliveryindextest', function(){
-	return view ('delivery.delivery');
-})->name('myJobs');
+Route::get('/delivery', 'Account\DeliveryController@index')->name('myJobs');
 
-Route::get('/deliveryjobtest', function(){
-	return view ('delivery.jobs');
-});
+Route::get('/delivery/{orderId}', 'Account\DeliveryController@getDeliveryJobDetails');
+
 
 Route::get('/managertest', function(){
 	return view ('manager.manager');

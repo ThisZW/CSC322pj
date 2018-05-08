@@ -324,3 +324,31 @@ table.table2 th{
 .rating-product-container{
   display:none;
 }
+
+
+#draw_area{
+  width:992px;
+  margin:auto;
+}
+
+.btn-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-center button{
+  display:inline-block;
+}
+
+.main-page .panel{
+  display:none;
+}
+
+.store-display-area{
+  text-align:center;
+  display:none;
+}
+
+#view-listing{
+  display:none;
+}
