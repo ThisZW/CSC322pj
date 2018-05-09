@@ -44,14 +44,12 @@ class OrderDetailController extends Controller
     }
 
     public function ajaxRateStore(Request $request){
-
         $storeRating = new StoreRating;
         $storeRating->store_id = $request->storeId;
         $storeRating->comment = $request->comment;
         $storeRating->score = $request->score;
         $storeRating->rater_id = Auth::id();
         $storeRating->save();
-
         return response()->json(array('data'=> 'success'), 200);
     }
 
@@ -60,7 +58,6 @@ class OrderDetailController extends Controller
     }
 
     public function ajaxRateProduct(Request $request){
-        $
     }
 
 }

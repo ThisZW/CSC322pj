@@ -67,9 +67,17 @@ Route::get('/delivery', 'Account\DeliveryController@index')->name('myJobs');
 Route::get('/delivery/{orderId}', 'Account\DeliveryController@getDeliveryJobDetails');
 
 
-Route::get('/managertest', function(){
-	return view ('manager.manager');
-})->name('manager');
+Route::get('/manager', 'Account\ManagerController@index')->name('manager');
+
+Route::post('/manager/sendsalary', 'Account\ManagerController@ajaxSetSalary');
+
+Route::post('/manager/verifyvisitor', 'Account\ManagerController@ajaxVerifyVisitor');
+
+Route::post('/manager/declinevisitor', 'Account\ManagerController@ajaxDeclineVisitor');
+
+Route::post('/manager/assigntodelivery', 'Account\ManagerController@ajaxAssignToDelivery');
+
+
 
 Route::get('/cooktest', function(){
 	return view ('cook.cook');

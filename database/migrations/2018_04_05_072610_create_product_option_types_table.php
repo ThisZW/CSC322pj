@@ -18,6 +18,7 @@ class CreateProductOptionTypesTable extends Migration
             $table->string('option_type');
             $table->string('option_type_input_type');
             $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

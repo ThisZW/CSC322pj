@@ -41,10 +41,11 @@
 			</div>
 
 
-		<script language = "javascript">
+		<script language="javascript">
 		var currentPrice = $(".price-field").text();
 		var addSizePrice = 0;
-		var addOptionPrice = 0;
+		var addOptionPrice = 0; 
+		@if ($data->productOptions->count() != 0)
 		 $(document).ready(function(){
 		    $("#size").change(function(){
 		        addSizePrice = $(this).find(':selected').data('addOn');
@@ -55,7 +56,7 @@
 		        $(".price-field").text( parseFloat(currentPrice) + parseFloat(addSizePrice) + parseFloat(addOptionPrice));
 		    }).trigger('change');
 		});
-
+		 @endif
 	    </script>
 	    <p></p>
 

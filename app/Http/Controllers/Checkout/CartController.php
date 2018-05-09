@@ -20,12 +20,13 @@ class CartController extends Controller
     public function addProductToSession(Request $request){
         $optionString = 'Options: ';
         $priceAfterAddOns = $request->price;
-        foreach($request->option as $oid){
-            $o = ProductOption::find($oid);
-            $optionString = $optionString . $o->option_type . "," . $o->option_name . '. ';
-            $priceAfterAddOns += $o->add_on_price;
-        }
-        
+        if($request->option){
+            foreach($request->option as $oid){
+                $o = ProductOption::find($oid);
+                $optionString = $optionString . $o->option_type . "," . $o->option_name . '. ';
+                $priceAfterAddOns += $o->add_on_price;
+            }
+        } else $optionString = 'No Options';
         $cartProduct = [
             'product_id' => $request->id,
             'name' => $request->name,

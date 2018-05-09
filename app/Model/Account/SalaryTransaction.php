@@ -4,7 +4,7 @@ namespace iEats\Model\Account;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SalaryTrasaction extends Model
+class SalaryTransaction extends Model
 {
     //
 }

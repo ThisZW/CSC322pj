@@ -20,6 +20,7 @@ class CreateStoreRatingsTable extends Migration
             $table->integer('rater_id');
             $table->longText('comment');
             $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

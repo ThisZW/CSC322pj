@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->integer('delivery_time')->nullable();
             $table->float('subtotal', 8, 2);
             $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

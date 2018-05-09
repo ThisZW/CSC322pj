@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->integer('option_id');
             $table->boolean('status');
             $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

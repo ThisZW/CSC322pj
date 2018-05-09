@@ -7,6 +7,7 @@ use Auth;
 use iEats\User;
 use iEats\Model\Order\Order;
 use iEats\Model\Order\OrderProduct;
+use iEats\Model\Order\OrderToDelivery;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -51,6 +52,7 @@ class CheckoutController extends Controller
 				$user->save();
 			}
 		}
+
 		$order->user_id = $user_id;
 		$order->store_id = $store_id;
 		$order->payment_method = "Paypal";
@@ -58,13 +60,22 @@ class CheckoutController extends Controller
 		$order->order_name = $request->name;
 		$order->phone_number = $request->phone_number;
 
+		$orderToDelivery = new OrderToDelivery([
+			'status' => 1,
+			'store_id' => $store_id,
+			'delivery_id' => 0,
+		]);
+
 		$address = new Address;
 		$address->x_grid = session()->get('customerAddress')[0];
 		$address->y_grid = session()->get('customerAddress')[1];
 		$address->save();
+
+		
 		$order->address()->associate($address);
 		$order->save();
-
+		
+		$order->orderToDelivery()->save($orderToDelivery);
 		foreach(session()->get('cart') as $sp){
 			$orderProduct = new OrderProduct([
 				'product_id' => $sp['product_id'],

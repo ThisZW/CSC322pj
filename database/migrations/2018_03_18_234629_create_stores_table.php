@@ -21,6 +21,7 @@ class CreateStoresTable extends Migration
             $table->integer('address_id');//->unsigned();
             //$table->foreign('address_id')->references('id')->on('address_book');
             $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

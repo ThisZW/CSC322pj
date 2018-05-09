@@ -19,6 +19,7 @@ class CreateCustomerRatingsTable extends Migration
             $table->int('score',2);
             $table->integer('rater_id');
             $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

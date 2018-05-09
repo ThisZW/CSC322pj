@@ -22,6 +22,7 @@ class CreateProductOptionsTable extends Migration
             $table->integer('add_on_price');//this is a add-on price
             $table->char('option_name',100);
             $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
