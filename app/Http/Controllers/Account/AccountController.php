@@ -10,10 +10,22 @@ use Auth;
 class AccountController extends Controller
 {
 
+
+    /**
+    *Calculate avg rating from rating table and return to the customer
+    *
+    *@return double
+    */
     public function calculateAverageRating(){
     	return 5; //not done yet
     }
 
+
+    /**
+    *get last order information for user account page
+    *
+    *@return array[]
+    */
     public function getLastOrderInfo(){
     	if (Order::where('user_id', Auth::id())->count() > 0){
 	    	$order = Order::where('user_id', Auth::id())->orderBy('id', 'desc')->first();
@@ -32,6 +44,12 @@ class AccountController extends Controller
 	    }
     }
 
+
+    /**
+    *get data from auth and return template
+    *
+    *@return \Illuminate\Http\Response
+    */
     public function index(){
     	$data = [
     		"userId"		=> Auth::id(),

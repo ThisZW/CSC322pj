@@ -10,6 +10,11 @@ use Auth;
 class OrderController extends Controller
 {
 
+    /**
+    *get template of orders
+    *
+    *@return Illuminate\Http\response
+    */
     public function index(){
     	if (Auth::guest()){
     		return "you are not logged in";
@@ -18,6 +23,11 @@ class OrderController extends Controller
     	return view('account/orders')->with('data', $data);
     }
 
+    /**
+    *get all orders for specified customer
+    *
+    *@return iEats\Model
+    */
     public function getOrders(){
     	$user = User::with('orders')->find(Auth::id());
     	return $user;

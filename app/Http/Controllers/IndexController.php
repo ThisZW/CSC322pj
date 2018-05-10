@@ -19,11 +19,24 @@ class IndexController extends Controller
         return view('pages.index')->with('data', $stores);
     }
 
+
+    /**
+     * get store information from request
+     * 
+     * @param Request $request
+     * @return json
+     */
     public function ajaxStoreFront(Request $request){
         $data = $this->getSelectedStore($request->coord, $request->customerAddr);
     	return response()->json(array('data'=> $data), 200);
     }
 
+    /**
+    *Grab store info
+    *
+    *@param $coord (of store), $customerAddr
+    *@return iEats\Model
+    */
     public function getSelectedStore($coord, $customerAddr){
         $addr = Address::where('x_grid', $coord[0])
                     ->where('y_grid', $coord[1])

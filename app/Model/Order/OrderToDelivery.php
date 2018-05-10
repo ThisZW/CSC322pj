@@ -18,6 +18,10 @@ class OrderToDelivery extends Model
 		return $this->belongsTo('User', 'delivery_id');
 	}
 
+	public function order(){
+		return $this->belongsTo('iEats\Model\Order\Order');
+	}
+
 	protected $fillable = [
         'store_id', 'order_id', 'delivery_id', 'status'
     ];

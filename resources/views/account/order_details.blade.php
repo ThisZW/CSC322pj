@@ -42,9 +42,7 @@
                                 <textarea type="textarea" id="rating-store-comment" name="rating-store" value="default" placeholder="Comments here"></textarea>
                             </div>
                         </div>
-                    @endif
-
-                    <br>
+                    
                     <script>
                         $(document).ready(function() {
                             $("#rating-store").click(function(){
@@ -74,24 +72,70 @@
                             });
                         });
                     </script>
-
-                        @if ($data->orderToDelivery)
+                    @endif
+                    <br>
+                        @if ($data->orderToDelivery->status != 1)
                             <div class = "order-deliver">
-                            	<p> Delivery Person Name:</p>
+                            	<p> Delivery Person Name: {{$data->deliveryName}}</p>
                             <br>
                             <div class="order-status">
-                                <p> Status:</p>
+                                <p> Status: 
+                                    @if($data->orderToDelivery->status == 2)
+                                        {{"Not yet Delivered"}}
+                                    @elseif($data->orderToDelivery->status == 0)
+                                        {{"Declined, will not deliver"}}
+                                    @else
+                                        {{"Delivered"}}
+                                    @endif
+
+                                </p>
                             </div>
-                            <div class="rating-container">
-                                <fieldset class="rating">
-                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5">5 star</label>
-                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4">4 star</label>
-                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3">3 star</label>
-                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2">2 star</label>
-                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1">1 star</label>
+                            @if($data->orderToDelivery->status == 3)
+                                <div class="rating-container">
+                                <fieldset class="rating" id="rating-delivery">
+                                    <input type="radio" id="star5" name="rating-delivery" value="5" /><label for="star5">5 star</label>
+                                    <input type="radio" id="star4" name="rating-delivery" value="4" /><label for="star4">4 star</label>
+                                    <input type="radio" id="star3" name="rating-delivery" value="3" /><label for="star3">3 star</label>
+                                    <input type="radio" id="star2" name="rating-delivery" value="2" /><label for="star2">2 star</label>
+                                    <input type="radio" id="star1" name="rating-delivery" value="1" /><label for="star1">1 star</label>
                                 </fieldset>
-                                <button class="submit-rate-btn btn btn-md">Submit</button>
+                                <button id="submit-delivery-rate-btn" class=" btn btn-md">Submit</button><p class="delivery-rating-success-msg"></p>
+                                <br>
+                                <div id="rating-delivery-comment-block">
+                                    <label for="rating-delivery-comment">If you rating is below 3 Please give a reason:</label><br>
+                                    <textarea type="textarea" id="rating-delivery-comment" name="rating-delivery" value="default" placeholder="Comments here"></textarea>
+                                </div>
                             </div>
+                                <script>
+                                $(document).ready(function() {
+                                    $("#rating-delivery").click(function(){
+                                        if ($('input:radio[name=rating-delivery]:checked').val() == "2" || $('input:radio[name=rating-delivery]:checked').val() == "1") {
+                                            $('#rating-delivery-comment-block').slideDown();
+                                        } else {
+                                            $('#rating-delivery-comment-block').slideUp();
+                                        }
+                                    });
+                                    $("#submit-delivery-rate-btn").click(function(event){
+                                        if ($("#rating-delivery :radio:checked").length == 0){
+                                            alert('Please choose rating before submit');
+                                        }
+                                        else {
+                                            $.ajax({
+                                                type: "POST",
+                                                url: '/myaccount/ratedelivery',
+                                                data: { deliveryId : "{{$data->orderToDelivery->delivery_id}}",
+                                                        score : $('input:radio[name=rating-delivery]:checked').val(),
+                                                        comment : $('#rating-delivery-comment').val(),
+                                                        _token: "{{ csrf_token() }}"},
+                                                success: function(data) {
+                                                    $('.delivery-rating-success-msg').text(data.data);
+                                                    $('#submit-delivery-rate-btn').attr("disabled","disabled");
+                                                }
+                                        });}
+                                    });
+                                });
+                                </script>
+                            @endif
                         @else
                             <p> This has not been delivered yet, you will see the information of delivery person after the delivery starts.</p>
                         @endif
@@ -148,7 +192,7 @@
                                             <td colspan="3">
                                                 <div id="rating-product-comment-block-{{$op->id}}">
                                                     <label for="rating-product-comment">If you rating is below 3 Please give a reason:</label><br>
-                                                    <textarea type="textarea" id="rating-product-comment-{{$op->id}}" name="rating-product-{{$op->id}}" value="default" placeholder="Comments here"></textarea>
+                                                    <textarea type="textarea" id="rating-product-comment-{{$op->id}}" name="rating-product-{{$op->id}}" value="default" placeholder="Comments here" disabled="disabled"></textarea>
                                                 </div>          
                                             </td>
                                         </tr>
@@ -158,13 +202,13 @@
                                                     $(".p-tr-{{$op->id}}").slideDown();
                                                 });
                                                 $("#rating-product-{{$op->id}}").click(function(){
-                                                    if ($('input:radio[name=rating]:checked').val() == "2" || $('input:radio[name=rating]:checked').val() == "1") {
-                                                        $('#rating-product-comment-block-{{$op->id}}').slideDown();
+                                                    if ($('input:radio[name=rating-{{$op->id}}]:checked').val() == "2" || $('input:radio[name=rating-{{$op->id}}]:checked').val() == "1") {
+                                                        $('#rating-product-comment-{{$op->id}}').prop('disabled', false);
                                                     } else {
-                                                        $('#rating-product-comment-block-{{$op->id}}').slideUp();
+                                                        $('#rating-product-comment-{{$op->id}}').prop('disabled', true);
                                                     }
                                                 });
-                                                $("#submit-store-rate-btn").click(function(event){
+                                                $("#submit-product-rate-btn-{{$op->id}}").click(function(event){
                                                     if ($("#rating-product-{{$op->id}} :radio:checked").length == 0){
                                                         alert('Please choose rating before submit');
                                                     }
@@ -186,7 +230,7 @@
                                             });
                                         </script>       
                                         @else
-                                        <td></td></tr>
+                                        <td>{{$yourProductRating->score . ": " . $yourProductRating->comment}}</td></tr>
                                         @endif
                                 @endforeach
                         	</table>
