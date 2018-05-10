@@ -72,7 +72,9 @@ Route::get('/delivery', 'Account\DeliveryController@index')->name('myJobs');
 
 Route::get('/delivery/{orderId}', 'Account\DeliveryController@getDeliveryJobDetails');
 
+Route::post('/delivery/ratecustomer', 'Account\DeliveryController@ajaxRateCustomer');
 
+Route::get('/delivery/confirmdelivery/{order_id}', 'Account\DeliveryController@confirmDelivery');
 
 
 
@@ -86,6 +88,7 @@ Route::post('/manager/verifyvisitor', 'Account\ManagerController@ajaxVerifyVisit
 Route::post('/manager/declinevisitor', 'Account\ManagerController@ajaxDeclineVisitor');
 
 Route::post('/manager/assigntodelivery', 'Account\ManagerController@ajaxAssignToDelivery');
+
 
 
 /*******************************************Cook management page*****************************************************/

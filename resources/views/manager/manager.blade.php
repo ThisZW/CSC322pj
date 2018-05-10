@@ -138,7 +138,7 @@ List of visitors waiting to be verified with their uploaded image, two buttons (
                                 var deliveryId = $('#select-delivery-' + id + ' :selected').val();
                                 $.ajax({
                                     type: "POST",
-                                    url: '/manager/assigndeliveryjob',
+                                    url: '/manager/assigntodelivery',
                                     data: { orderId : id,
                                             deliveryId: deliveryId,
                                             _token: "{{ csrf_token() }}"},

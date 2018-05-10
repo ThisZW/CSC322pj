@@ -15,9 +15,11 @@ class CreateCustomerRatingsTable extends Migration
     {
         Schema::create('customer_ratings', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('order_id');
             $table->integer('customer_id');
             $table->int('score',2);
             $table->integer('rater_id');
+            $table->string('comment');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });

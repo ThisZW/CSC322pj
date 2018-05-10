@@ -501,7 +501,7 @@ $.extend(Controller, {
         centerY = Math.floor(height / 2 / nodeSize);
 
         //this.setStartPos(0, 20);
-        this.setEndPos(20, 0);
+
 
         //set default blocks
         for (height = 0; height < 18; height++) {
@@ -525,18 +525,16 @@ $.extend(Controller, {
             if ((height % 3 == 0) || (width % 4 == 0))
                 this.setWalkableAt(width, height, false);
         }
-
-
-        View.setStartPosWithoutDeletePrev(1, 10);
-        View.setStartPosWithoutDeletePrev(6, 2);
-        View.setStartPosWithoutDeletePrev(11, 7);
         //View.setBusyPos(9, 0);
         //View.setBusyPos(11, 3);
         //write a function/cond to restrict user choose points that are not default node.
-        this.setStartPos(1, 10);
+        this.setWalkableAt(userX, userY, true);
+        this.setEndPos(userX, userY);
+        this.setStartPos(storeX, storeY);
 
     },
     
+
     flushCurrentGreenNodes: function(store) {
         View.flushCurrentGreenNodes(store.x_grid, store.y_grid);
     },

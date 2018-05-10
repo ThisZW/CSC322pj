@@ -128,6 +128,7 @@
 </div>
         <div id="footer">
             <div>
+                <a href="/login">Use this to login if you already have a account</a>
                 <div class="connect">
                     <a href="http://freewebsitetemplates.com/go/facebook/" class="facebook">facebook</a>
                     <a href="http://freewebsitetemplates.com/go/twitter/" class="twitter">twitter</a>

@@ -30,11 +30,66 @@ This should show store name, customer name, email phone-number , both store and 
    	 	<div class="row justify-content-center">
        		<div class="col-md-12">
         		<div class="card">
+        			<h5>Recommended Delivery Routes for order {{$data['order']->id}}</h5>
+        			<h5>Where the store is at green grid and the customer lives at red grid </h5>
+        			@if($data['order']->orderToDelivery->status ==3)
+        				<h4>This order has already been delivered!</h4>
+        			@endif
 				<script type="text/javascript">
 				          //store all store's coordinate
 				          //var = ""
 				          $(document).ready(function () {
-				              
+				              $.extend(Controller, {
+		              		   setDefaultStartEndPos: function() {
+						        var width, height,
+						            marginRight, availWidth,
+						            centerX, centerY,
+						            endX, endY,
+						            nodeSize = View.nodeSize;
+
+						        width  = $(window).width();
+						        height = $(window).height();
+
+						        marginRight = $('#algorithm_panel').width();
+						        availWidth = width - marginRight;
+
+						        centerX = Math.ceil(availWidth / 2 / nodeSize);
+						        centerY = Math.floor(height / 2 / nodeSize);
+
+						        //this.setStartPos(0, 20);
+
+
+						        //set default blocks
+						        for (height = 0; height < 18; height++) {
+						            for (width = 0;  width < 32; width++) {
+						                if ((height % 3 !== 0) && (width % 4 !== 0))
+						                    this.setWalkableAt(width, height, false);
+						            }
+						        }
+
+						        //Gor: random generate busy conditions
+						        for (var value = 0; value < 30; value++) {
+						            width = Math.floor((Math.random() * 32) + 0);
+						            height = Math.floor((Math.random() * 18) + 0);
+						            if ((height % 3 == 0) || (width % 4 == 0))
+						                View.setBusyPos(width, height);
+						        }
+
+						        for (var value = 0; value < 10; value++) {
+						            width = Math.floor((Math.random() * 32) + 0);
+						            height = Math.floor((Math.random() * 18) + 0);
+						            if ((height % 3 == 0) || (width % 4 == 0))
+						                this.setWalkableAt(width, height, false);
+						        }
+						        //View.setBusyPos(9, 0);
+						        //View.setBusyPos(11, 3);
+						        //write a function/cond to restrict user choose points that are not default node.
+						        this.setWalkableAt({{$data['user']->x_grid}}, {{$data['user']->y_grid}}, true);
+						        this.setEndPos({{$data['user']->x_grid}}, {{$data['user']->y_grid}});
+						        this.setStartPos({{$data['store']->x_grid}}, {{$data['store']->y_grid}});
+
+							    },
+				              });
 
 				              if (!Raphael.svg) {
 				                  window.location = './notsupported.html';
@@ -239,7 +294,8 @@ This should show store name, customer name, email phone-number , both store and 
 
 										    <div id="stats"></div>
     			</div>
-
-    
+    @if($data['order']->orderToDelivery->status ==2)
+    <a href="/delivery/confirmdelivery/{{$data['order']->id}}"><button class="btn btn-md">Confirm Delivery</button></a>
+    @endif
 </div></div></div></div>
 @endsection
