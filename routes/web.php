@@ -42,9 +42,7 @@ Route::post('/cart', 'Checkout\CartController@buttonAddToCartAction')->name('add
 
 Route::post('/cart/update', 'Checkout\CartController@updateProductQuantityInSession')->name('updateCart');
 
-Route::get('/checkout', function(){
-	return view('checkout/checkout');
-})->name('checkout');
+Route::get('/checkout', 'Checkout\CheckoutController@index')->name('checkout');
 
 Route::post('/placeOrder', 'Checkout\CheckoutController@placeOrderAction')->name('placeOrder');
 
@@ -89,7 +87,7 @@ Route::post('/manager/declinevisitor', 'Account\ManagerController@ajaxDeclineVis
 
 Route::post('/manager/assigntodelivery', 'Account\ManagerController@ajaxAssignToDelivery');
 
-
+Route::post('/manager/layoff', 'Account\ManagerController@ajaxLayoff');
 
 /*******************************************Cook management page*****************************************************/
 Route::get('/cook', 'Account\CookController@index')->name('myMenu');

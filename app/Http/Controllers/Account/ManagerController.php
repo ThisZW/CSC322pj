@@ -8,6 +8,7 @@ use iEats\Model\Account\SalaryTransaction;
 use iEats\Model\Order\Order;
 use iEats\Model\Order\OrderToDelivery;
 use iEats\User;
+use iEats\Model\Catalog\Store;
 use Auth;
 
 class ManagerController extends Controller
@@ -23,6 +24,8 @@ class ManagerController extends Controller
     		'cooks' => $this->getCookInfo(),
     		'deliverys' => $this->getDeliveryInfo(),
     		'orders' => $this->getStoreOrders(),
+            'blacklist' =>$this->getBlacklistedCustomers(),
+            'store' => $this->getStoreInfo(),
     	);
     	return view('manager.manager')->with('data', $data);
     }
@@ -47,11 +50,23 @@ class ManagerController extends Controller
     public function getDeliveryInfo(){
     	$data = User::with('salary')->where('role', 'delivery')->get();
     	foreach ($data as $d){
+            $d->warning = "No warnings";
+            if ($d->deliveryRatings->count() >= 3){
+                $lastRatings = $d->deliveryRatings->take(3)->avg('score');
+                if($lastRatings < 2){
+                    $d->warning = "Low Rating Warning";
+                }
+            }
     		$d->salaries = $this->getTotalSalary($d->id);
     	}
     	return $data;
     }
 
+    public function getStoreInfo(){
+        $store = Store::with('ratings')->find(Auth::user()->stores);
+        $store->rating = round($store->ratings->avg('score'),2);
+        return $store;
+    }
 
     /**
     *get cook information
@@ -61,6 +76,7 @@ class ManagerController extends Controller
     public function getCookInfo(){
     	$data = User::with('salary')->where('role', 'cook')->get();
     	foreach ($data as $d){
+            //$d->rating = 
     		$d->salaries = $this->getTotalSalary($d->id);
     	}
     	return $data;
@@ -81,7 +97,17 @@ class ManagerController extends Controller
     	return $data;
     }
 
-
+    public function getBlacklistedCustomers(){
+        $customers = User::with('customerRatings')->where('role', 'customer')->get();
+        $i = 0;
+        foreach($customers as $c){
+            if($c->customerRatings->avg('score') < 1){
+                $data[$i] = $c;
+                $i++;
+            }
+        }
+        return $data;
+    }
     /**
     *set salary transaction using ajax
     *
@@ -138,5 +164,12 @@ class ManagerController extends Controller
     	$orderToDelivery->status = 2; //send orders to delivery persons.
     	$orderToDelivery->save();
     	return response()->json(array('data'=> 'Success!'), 200);
+    }
+
+    public function ajaxLayoff(Request $request){
+        $delivery = User::find($request->userId);
+        $delivery->status = 0;
+        $delivery->save();
+        return response()->json(array('data'=> 'Success!'), 200);
     }
 }

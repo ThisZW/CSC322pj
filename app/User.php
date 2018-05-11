@@ -36,6 +36,11 @@ class User extends Authenticatable
     }
 
     public function customerRatings(){
-        return $this->hasMany('iEats\Model\Rating\CustomerRating', 'customer_id');
+        return $this->hasMany('iEats\Model\Rating\CustomerRating', 'customer_id')->orderBy('id', 'desc');
     }
+
+    public function deliveryRatings(){
+        return $this->hasMany('iEats\Model\Rating\DeliveryRating', 'delivery_id')->orderBy('id', 'desc');
+    }
+
 }

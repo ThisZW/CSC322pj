@@ -19,6 +19,7 @@ class ProductController extends Controller
     public function getProductData($storeId,$categoryId,$productId){
 
         $product = Product::with('productOptions')->find($productId);
+        $product->rating = round($product->ratings->avg('score'),2);
         return $product;
 
     }
@@ -45,9 +46,9 @@ class ProductController extends Controller
             $tier = 3;
         } else if ($rating > 2) {
             $tier = 2;
-        } else {
+        } else if ($rating > 1) {
             $tier = 1;
-        }
+        } else $tier = 0;
         return $tier;
     }
 

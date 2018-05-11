@@ -20,6 +20,7 @@ List of visitors waiting to be verified with their uploaded image, two buttons (
         				Manage Page
         			</div>
 
+                    <h5>Your Store {{$data['store']->name}} has a current rating of {{$data['store']->rating}}</h5>
 
                     <script>
                         $(document).ready(function(){
@@ -51,10 +52,14 @@ List of visitors waiting to be verified with their uploaded image, two buttons (
         							<th>Name</th>
                                     <th>Total Salary Given</th>
         							<th>Send Salary Now</th>
+                                    <th>Status</th>
         						</tr>
                                 @foreach($data['cooks'] as $c)
         						<tr>
-        							<td><button class="btn btn-md">Laid Off</button></td>
+        							<td>@if($c->status == 1)
+                                        <button class="btn btn-md btn-layoff" data-id="{{$c->id}}">Layoff</button>
+                                        <span id="layoff-success-msg-{{$c->id}}"></span>
+                                        @endif</td>
         							<td>{{$c->id}}</td>
         							<td>{{$c->name}}</td>
                                     <td>{{$c->salaries}}</td>
@@ -62,6 +67,13 @@ List of visitors waiting to be verified with their uploaded image, two buttons (
         								<button class="btn-md btn submit-salary" data-id="{{$c->id}}">Submit</button>
                                         <span id="salary-success-msg-{{$c->id}}"></span>
         							</td>
+                                    <td>
+                                        @if($c->status == 1)
+                                        {{'Active'}}
+                                        @else
+                                        {{'Laid off'}}
+                                        @endif
+                                    </td>
         						</tr>
                                 @endforeach
 
@@ -77,19 +89,33 @@ List of visitors waiting to be verified with their uploaded image, two buttons (
         							<th></th>
         							<th>ID</th>
         							<th>Name</th>
+                                    <th>Warning?</th>
                                     <th>Total Salary Given</th>
         							<th>Send Salary Now</th>
+                                    <th>Status</th>
         						</tr>
                                 @foreach($data['deliverys'] as $d)
         						<tr>
-        							<td><button class="btn btn-md">Laid Off</button></td>
+        							<td>@if($d->status == 1)
+                                        <button class="btn btn-md btn-layoff" data-id="{{$d->id}}">Layoff</button>
+                                        <span id="layoff-success-msg-{{$d->id}}"></span>
+                                        @endif
+                                    </td>
         							<td>{{$d->id}}</td>
         							<td>{{$d->name}}</td>
+                                    <td>{{$d->warning}}</td>
                                     <td>{{$d->salaries}}</td>
         							<td><input type="number" id="salary-input-{{$d->id}}"/>
                                         <button class="btn-md btn submit-salary" data-id="{{$d->id}}">Submit</button>
                                         <span id="salary-success-msg-{{$d->id}}"></span>
         							</td>
+                                    <td>
+                                        @if($d->status == 1)
+                                        {{'Active'}}
+                                        @else
+                                        {{'Laid off'}}
+                                        @endif
+                                    </td>
         						</tr>
                                 @endforeach
         					</table>
@@ -98,6 +124,21 @@ List of visitors waiting to be verified with their uploaded image, two buttons (
 
                    <script>
                         $(document).ready(function(){
+                            $(".btn-layoff").click(function(event){
+                                var id = $(this).data('id');
+                                var obj = $(this);
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/manager/layoff',
+                                    data: { userId : id,
+                                            _token: "{{ csrf_token() }}"},
+                                    success: function(data) {
+                                        $(obj).prop("disabled",true);
+                                        $('#layoff-success-msg-' + id).text(data.data);
+                                    }
+                                });
+                            });
+
                             $(".verify-visitor").click(function(event){
                                 var id = $(this).data('id');
                                 var obj = $(this);
@@ -214,6 +255,26 @@ List of visitors waiting to be verified with their uploaded image, two buttons (
         					</table>
         				</div>
         			</div>
-
+                    <div class="blacklist" style="text-align:center; margin:30px">
+                    <h5>List of names in blacklist</h5>
+                    @foreach($data['blacklist'] as $b)
+                    <span>{{$b->name}}, </span>
+                    @endforeach
+                </div>
+                    <h5 style="text-align:center">Complains</h5>
+                    <table class="table1" align="center">
+                        <tr>
+                            <th>rater id</th>
+                            <th>score</th>
+                            <th>comment</th>
+                        </tr>
+                        @foreach($data['store']->ratings as $r)
+                            <tr>
+                                <td>{{$r->rater_id}}</td>
+                                <td>{{$r->score}}</td>
+                                <td>{{$r->comment}}</td>
+                            </tr>
+                        @endforeach
+                    </table>
 </div></div></div></div>
 @endsection

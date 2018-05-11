@@ -110,7 +110,7 @@
                         <a href="/">Reselect Store</a>
                     </li>
                     <li class="menu">
-                        <a href="/stores">Listings</a>
+                        <a href="/stores/1/menu">Listings</a>
                     </li>
                     <li>
                         <a href="/cart">Cart</a>

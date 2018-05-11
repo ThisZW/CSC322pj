@@ -31,10 +31,10 @@
 	title="picture of tea"/>
 
 	</div>
-
-
-	<div class="product-side">
-		<form action="{{ route('addToCart')}}" method="POST" >
+<form action="{{ route('addToCart')}}" method="POST" >
+<div class="row">
+	<div class="product-side col-6">
+		
 				@csrf
 	     <div class="product-name"> {{$data->name}}</div>
 	      <p class="price-label">$<span class="price-field">{{ number_format($price_for_user,2)}}</span></p>
@@ -85,29 +85,44 @@
 	        <p> </p>
 
 
+
 		  <h6> Select Quantity: </h6>
 
 		<p></p>
-
+				@if (!$tier == 0)
                 <input type="number" value="1"  name="quantity" min="1" max="100" step="1" >
                 <input type="hidden" name="id" value="{{ $data->id }}">
                 <input type="hidden" name="name" value="{{ $data->name}}">
                 <input type="hidden" name="price" value="{{ $price_for_user }}"><br>
                 <input type="submit" class="btn btn-success btn-md add-to-cart-btn" value="Add to Cart">
-		   </form>
+                @else
+                <h3>Your Account has been deactivated because your rating is below 1!</h3>
+                @endif
+		   
 	  
 	  
 	  </div>	  
+	  <div class="product-side col-6">
+	  	    <h6> Select Extras:</h6>
+	    <select multiple name="extras[]" style="height:auto">
+			@foreach($data->productOptions as $o)
+				@if ($o->option_type == 'extras')
+					<option data-add-on="{{$o->add_on_price,2}}" value="{{$o->id}}">{{$o->option_name}}</option>
+				@endif
+			@endforeach
+		</select>
+	</div>
+
+	</div></form>
 	  <div class="product-descriptions">
 	  
 	  <!-- This will be linked to the rating model -->
 	  <h2> Star Rating </h2>
-	  <span class="fa fa-star checked"></span>
-	  <span class="fa fa-star checked"></span>
-	  <span class="fa fa-star checked"></span>
-	  <span class="fa fa-star checked"></span>
-	  <span class="fa fa-star checked"></span>
-	  
+	  @if(!$data->rating == 0)
+	  <h5>{{$data->rating}} Stars</h5>
+	  @else
+	  <h5>Not yet rated</h5>
+	  @endif
 	  {!! html_entity_decode($data->description) !!}
 	  
 	  </div>

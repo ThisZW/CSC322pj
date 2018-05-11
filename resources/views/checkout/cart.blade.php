@@ -49,7 +49,7 @@
 		<tfoot>
 		     <tr class = "first last">
 			   <td class = "a-right last" colspan="50">
-			    <button class = "button continue">Continue Shopping</button>
+			    <button class="button continue" onclick="window.location.href='/stores/1/menu">Continue Shopping</button>
 				<button class = "button clear" style="float: right;">Clear Cart</button>
 				<!-- <button class = "button update" style="float: right;">Update Cart</button> -->
 			   </td>
@@ -102,7 +102,7 @@
 	</div>
 </div>
 
-<pre>{{ print_r(session()->all())}}
+<!-- <pre>{{ print_r(session()->all())}}
 
-</pre>
+</pre> -->
 @endsection

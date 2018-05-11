@@ -39,6 +39,7 @@
     }, '#paypal-button');
   </script>
 @endsection
+
 @section('content')
 <div class="checkout-container main">
  
@@ -54,11 +55,11 @@
             <div class="form-group row">
               <div class="col-md-6">
               <label for="name"><i class="fa fa-user"></i> Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Cesar M De">
+              <input type="text" id="name" name="name" value="{{$data['name']}}" readonly="readonly">
             </div>
               <div class="col-md-6">
               <label for="phone-number"><i class="fa fa-phone"></i> Phone number</label>
-              <input type="text" id="phone_number" name="phone_number" placeholder="212-008-774">
+              <input type="text" id="phone_number" name="phone_number" value="212-008-774">
             </div>
           </div>
           @if (Auth::guest())
@@ -88,7 +89,7 @@
             <input type="text" id="cname" name="cardname" placeholder="YAYROUGE"> -->
             <br><br>
             <h4><b>Order</b></h4>
-            <h5><b>Estimated Subtotal</b></h5>
+            <h5><b>Estimated Subtotal</b>: {{$data['subtotal']}}</h5>
 
           </div>
 

@@ -26,4 +26,5 @@ class Product extends Model
     {
         return $this->hasMany('iEats\Model\Catalog\CookToProduct');
     }
+
 }

@@ -26,6 +26,11 @@ class CartController extends Controller
                 $optionString = $optionString . $o->option_type . "," . $o->option_name . '. ';
                 $priceAfterAddOns += $o->add_on_price;
             }
+
+            if($request->input('extras')){
+                
+                $optionString += ' ' . implode($request->extras);
+            }
         } else $optionString = 'No Options';
         $cartProduct = [
             'product_id' => $request->id,

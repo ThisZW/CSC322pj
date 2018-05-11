@@ -16,10 +16,6 @@ use iEats\Model\Address\Address;
 class CheckoutController extends Controller
 {
    
-	public function index(){
-		//no index yet, everything is inside the session.
-	}
-
 	
 	/**
 	*store order details into database from session of cart
@@ -99,5 +95,9 @@ class CheckoutController extends Controller
 		return view('checkout.success');
 	}
 
-
+	public function index(){
+		$data['subtotal'] = session()->get('subtotal');
+		$data['name'] = Auth::user()->name;
+		return view('checkout.checkout')->with('data', $data);
+	}
 }
