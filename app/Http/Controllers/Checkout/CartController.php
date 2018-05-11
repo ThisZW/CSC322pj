@@ -29,8 +29,9 @@ class CartController extends Controller
 
             if($request->input('extras')){
                 
-                $optionString += ' ' . implode($request->extras);
+                $optionString += $request->extras;
             }
+
         } else $optionString = 'No Options';
         $cartProduct = [
             'product_id' => $request->id,
