@@ -29,7 +29,7 @@ class CartController extends Controller
 
             if($request->input('extras')){
                 
-                $optionString = $optionString . ' ' . toString($request->extras);
+                $optionString = $optionString . ' ' . (string)$request->extras;
             }
 
         } else $optionString = 'No Options';
