@@ -5,11 +5,12 @@ namespace iEats\Http\Controllers\Account;
 use Illuminate\Http\Request;
 use iEats\Http\Controllers\Controller;
 use iEats\Model\Order\Order; 
+use iEats\Model\Rating\CustomerRating;
+use iEats\User;
 use Auth;
 
 class AccountController extends Controller
 {
-
 
     /**
     *Calculate avg rating from rating table and return to the customer
@@ -17,7 +18,8 @@ class AccountController extends Controller
     *@return double
     */
     public function calculateAverageRating(){
-    	return 5; //not done yet
+    	$rating = User::find(Auth::id())->customerRatings->avg('score');
+        return $rating;
     }
 
 

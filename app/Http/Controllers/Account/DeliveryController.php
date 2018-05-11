@@ -13,6 +13,12 @@ use Auth;
 class DeliveryController extends Controller
 {
 
+
+    /**
+    *
+    *
+    *
+    */
     public function index(){
     	$data['delivered'] = $this->getDeliveredOrders();
         $data['waiting'] = $this->getWaitingOrders();

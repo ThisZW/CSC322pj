@@ -23,27 +23,34 @@ give a checkbox if the cook want to assign themselve into the product so custome
         			<div class = "card-header">
         				Cook information
         			</div>
+                    <h5>Your Name: {{$data['name']}}</h5>
+                    <h5>You Belongs to store: {{$data['store']->name}}</h5>
         			<div class = "cook-product">
-        				<p> Product Lists:  </p>
+        				<p class="center"> Product Lists:  </p>
         				<div class="cook-table">
         					<table class="table1" align="center">
         						<tr>
-        							<th></th>
-        							<th></th>
+        							<th>Product ID</th>
         							<th>Product Name</th>
-        							<th>Cook ID/Name</th>
+                                    <th>Price for VIP</th>
+                                    <th>Price for Member</th>
+                                    <th>Price for Visitor</th>
+        							<th>Current Cooks</th>
         							<th>Rating</th>
+                                    <th>Action</th>
         						</tr>
-
+                                @foreach($data['store']->products as $p)
         						<tr>
-        							<td><a href="" class="btn center">Remove</a></td>
-        							<td><a href="" cladd="btn center">Edit</a></td>
-        							<td></td>
-        							<td></td>
-        							<td></td>
-
+        							<td>{{$p->id}}</td>
+        							<td>{{$p->name}}</td>
+        							<td>{{$p->price_t3}}</td>
+        							<td>{{$p->price_t2}}</td>
+                                    <td>{{$p->price_t1}}</td>
+                                    <td></td>
+                                    <td>{{$p->rating}}</td>
+                                    <td></td>
         						</tr>
-
+                                @endforeach
         						<tfoot>
         							<tr class = "first last">
         								<td class = "a-right last" colspan="50">

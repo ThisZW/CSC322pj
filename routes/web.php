@@ -92,6 +92,4 @@ Route::post('/manager/assigntodelivery', 'Account\ManagerController@ajaxAssignTo
 
 
 /*******************************************Cook management page*****************************************************/
-Route::get('/cooktest', function(){
-	return view ('cook.cook');
-})->name('myMenu');
+Route::get('/cook', 'Account\CookController@index')->name('myMenu');

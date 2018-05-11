@@ -34,4 +34,8 @@ class User extends Authenticatable
     public function salary(){
         return $this->hasMany('iEats\Model\Account\SalaryTransaction');
     }
+
+    public function customerRatings(){
+        return $this->hasMany('iEats\Model\Rating\CustomerRating', 'customer_id');
+    }
 }
