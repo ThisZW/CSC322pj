@@ -8,9 +8,20 @@
 		 $price_for_user = $data->price_t1;
 	 @endphp
 	@else
-	<div class="notification">You are currently a member of this website, your price will be based your rating, go to your account page for details.</div>
+	
 	 @php
-		 $price_for_user = $data->price_t2;
+	 	if($tier ==3){
+			echo '<div class="notification">You are currently a VIP based on your excellent rating, you will receive best prices.</div>';
+			$price_for_user = $data->price_t3;
+		}
+		else if($tier == 2){
+			echo '<div class="notification">You are currently a member of this website, you will enjoy your member price.</div>';
+			$price_for_user = $data->price_t2;
+		}
+		else{
+			echo '<div class="notification">Your rating is low, your price will be the same as visitors until you raise up your rating.</div>';
+			$price_for_user = $data->price_t1;
+		}
 	 @endphp
 	@endguest
 

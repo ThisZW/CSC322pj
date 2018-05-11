@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use iEats\Http\Controllers\Controller;
 use iEats\User;
 use iEats\Model\Catalog\Product;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -36,6 +37,9 @@ class ProductController extends Controller
     }
 
     public function getPriceTier(){
+        if(Auth::guest()){
+            return 1;
+        }
         $rating = User::find(Auth::id())->customerRatings->avg('score');
         if($rating > 4){
             $tier = 3;
