@@ -9,12 +9,12 @@ class Category extends Model
 
     public function store()
     {
-    	return $this->belongsTo('iEats\Catalog\Store');
+    	return $this->belongsTo('iEats\Model\Catalog\Store');
     }
 
     public function products()
     {
-    	return $this->hasMany('iEats\Catalog\Product');
+    	return $this->hasMany('iEats\Model\Catalog\Product');
     }
 
 }

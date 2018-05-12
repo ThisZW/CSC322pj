@@ -56,6 +56,7 @@ class CheckoutController extends Controller
 		$order->order_name = $request->name;
 		$order->phone_number = $request->phone_number;
 
+
 		$orderToDelivery = new OrderToDelivery([
 			'status' => 1,
 			'store_id' => $store_id,
@@ -99,5 +100,10 @@ class CheckoutController extends Controller
 		$data['subtotal'] = session()->get('subtotal');
 		$data['name'] = Auth::user()->name;
 		return view('checkout.checkout')->with('data', $data);
+	}
+
+	public function ajaxUseCoupon(Request $request){
+		session()->put('subtotal', round(session()->get('subtotal') * 0.9, 2));
+		return response()->json(array('data'=> 'Success!'), 200);
 	}
 }

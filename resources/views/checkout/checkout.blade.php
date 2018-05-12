@@ -2,42 +2,7 @@
 
 @section('header-extra')
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-  <script>
-    paypal.Button.render({
-      env: 'production', // Or 'sandbox',
 
-      commit: true, // Show a 'Pay Now' button
-
-      style: {
-        color: 'gold',
-        size: 'small'
-      },
-
-      payment: function(data, actions) {
-        /* 
-         * Set up the payment here 
-         */
-      },
-
-      onAuthorize: function(data, actions) {
-        /* 
-         * Execute the payment here 
-         */
-      },
-
-      onCancel: function(data, actions) {
-        /* 
-         * Buyer cancelled the payment 
-         */
-      },
-
-      onError: function(err) {
-        /* 
-         * An error occurred during the transaction 
-         */
-      }
-    }, '#paypal-button');
-  </script>
 @endsection
 
 @section('content')
@@ -74,7 +39,7 @@
             
           </div>
           
-          <div class="col-md-12">
+          <div class="col-md-4">
             <h3><strong>Payments</strong></h3>
           <p>
           </p>  
@@ -82,14 +47,50 @@
           <select>
           <option value="volvo">paypal</option>
           </select>
-          <p>
-          </p>
+          </div>
 
+          <div class="col-md-8">
+            <h3><strong>Coupon</strong></h3>
+          <p>
+          </p>  
+          <label for="coupon"><i class="fa fa-bill"></i>Coupon code</label>
+          <div class="row">
+           <div class="col-md-8">
+            <input type="text" id="coupon" name="coupon" placeholder="Enter your coupon code if you have it">
+           </div>
+           <div class="col-md-4">
+             <button type="button" class="btn btn-md" id="enter-coupon">Enter</button>
+             <p></p>
+           </div>
+           <script>
+             $(document).ready(function() {
+              $('#enter-coupon').click(function(){
+                var obj = $(this);
+                $.ajax({
+                  type: "POST",
+                  url: '/checkout/ajaxcoupon',
+                  data: { 
+                          _token: "{{ csrf_token() }}"},
+                  success: function(data) {
+                      console.log(data.data);
+                      $(this).next().text(data.data);
+                      $('#enter-coupon').attr("disabled","disabled");
+                      $('#subtotal-value').text( (parseFloat($('#subtotal-value').text()) * 0.9).toFixed(2));
+                      $('#text-percent').text('(10% percent off)');
+                  }
+                });
+              });
+             });
+           </script>
+         </div>
+          </div>
+
+          <div class="col-md-12">
             <!-- <label for="cname">Promo Code</label>
             <input type="text" id="cname" name="cardname" placeholder="YAYROUGE"> -->
             <br><br>
             <h4><b>Order</b></h4>
-            <h5><b>Estimated Subtotal</b>: {{$data['subtotal']}}</h5>
+            <h5 ><b>Estimated Subtotal</b>: <h5 id="subtotal-value">{{$data['subtotal']}}</h5></h5><h5 id="text-percent"></h5>
 
           </div>
 

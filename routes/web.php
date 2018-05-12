@@ -44,6 +44,8 @@ Route::post('/cart/update', 'Checkout\CartController@updateProductQuantityInSess
 
 Route::get('/checkout', 'Checkout\CheckoutController@index')->name('checkout');
 
+Route::post('/checkout/ajaxcoupon', 'Checkout\CheckoutController@ajaxUseCoupon');
+
 Route::post('/placeOrder', 'Checkout\CheckoutController@placeOrderAction')->name('placeOrder');
 
 

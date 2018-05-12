@@ -19,15 +19,8 @@ class CategoryController extends Controller
 	*/
 	public function getListings($storeId)
 	{
-
-		$categories = Category::find($storeId);
-		foreach ($categories as $cat){
-			#echo "???" . $cat->id;
-			$products = Product::where('category_id',$cat->id)->take(20)->get();
-			$cat->products = $products;
-		}
-		return $categories;
-		
+		$categories = Category::with('products')->where('store_id', $storeId)->get();
+		return $categories;	
 	}
 
 
