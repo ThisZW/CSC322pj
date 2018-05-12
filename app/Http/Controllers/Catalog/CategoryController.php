@@ -20,7 +20,7 @@ class CategoryController extends Controller
 	public function getListings($storeId)
 	{
 
-		$categories = Category::find($storeId)->take(20)->get();
+		$categories = Category::find($storeId);
 		foreach ($categories as $cat){
 			#echo "???" . $cat->id;
 			$products = Product::where('category_id',$cat->id)->take(20)->get();

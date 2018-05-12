@@ -39,6 +39,27 @@ give a checkbox if the cook want to assign themselve into the product so custome
         							<th>Rating</th>
                                     <th>Action</th>
         						</tr>
+                                <script>
+                                        $(document).ready(function(){
+                                            $('.btn-delete-product').click(function(){
+                                                var r = confirm("Delete this product?");
+                                                var id = $(this).data('id');
+                                                var obj = $(this);
+                                                if (r == true){
+                                                    $.ajax({
+                                                        type: "POST",
+                                                        url: '/cook/ajaxdeleteproduct',
+                                                        data: { productId : id,
+                                                                _token: "{{ csrf_token() }}"},
+                                                        success: function(data) {
+                                                            $(obj).prop("disabled",true);
+                                                            $(obj).next().text(data.data);
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        });
+                                    </script>
                                 @foreach($data['store']->products as $p)
         						<tr>
         							<td>{{$p->id}}</td>
@@ -46,16 +67,20 @@ give a checkbox if the cook want to assign themselve into the product so custome
         							<td>{{$p->price_t3}}</td>
         							<td>{{$p->price_t2}}</td>
                                     <td>{{$p->price_t1}}</td>
-                                    <td></td>
-                                    <td>{{$p->rating}}</td>
-                                    <td></td>
+                                    <td>Cook Test 2</td>
+                                    <td>{{round($p->rating,2)}}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-delete-product" data-id="{{$p->id}}">delete</button>
+                                        <span id="delete-succes-msg-{{$p->id}}"></span>
+                                        <a href="/cook/modifyproduct/{{$p->id}}" ><span><button class="btn btn-sm" class="btn-modify-product" data-id="{{$p->id}}">modify</button></span></a>
+                                    </td>
+
         						</tr>
                                 @endforeach
         						<tfoot>
         							<tr class = "first last">
         								<td class = "a-right last" colspan="50">
-        									<button class = "button add" style="float: right; border-radius: 12px;">Add</button>
-        								</td>
+        									<a href="/cook/addproduct" > <button class="button add" style="float: right; border-radius: 12px;">Add</button> </a>
         							</tr>
         						</tfoot>
 

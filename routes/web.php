@@ -91,3 +91,13 @@ Route::post('/manager/layoff', 'Account\ManagerController@ajaxLayoff');
 
 /*******************************************Cook management page*****************************************************/
 Route::get('/cook', 'Account\CookController@index')->name('myMenu');
+
+Route::post('/cook/ajaxdeleteproduct', 'Account\CookController@ajaxDeleteProduct');
+
+Route::get('/cook/modifyproduct/{productId}', 'Account\CookController@modifyProductView');
+
+Route::post('/cook/modifyproduct/{productId}', 'Account\CookController@modifyProduct');
+
+Route::get('/cook/addproduct', 'Account\CookController@addProductView');
+
+Route::post('/cook/addproduct', 'Account\CookController@addProduct');

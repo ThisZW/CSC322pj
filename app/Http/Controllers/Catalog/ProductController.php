@@ -46,10 +46,11 @@ class ProductController extends Controller
             $tier = 3;
         } else if ($rating > 2) {
             $tier = 2;
-        } else if ($rating > 1 || $rating == 0) {
+        } else if ($rating > 1) {
             $tier = 1;
         } else $tier = 0;
         return $tier;
     }
 
 }
+    
